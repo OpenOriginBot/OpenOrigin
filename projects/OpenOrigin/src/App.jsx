@@ -6,7 +6,7 @@ import ExperimentDashboard from './modules/Lab/ExperimentDashboard';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/OpenOrigin">
       <Routes>
         <Route path="/" element={<AppShell />}>
           <Route index element={<div style={{ padding: '40px', color: '#94a3b8', textAlign: 'center' }}>👈 从左侧选择模块开始</div>} />

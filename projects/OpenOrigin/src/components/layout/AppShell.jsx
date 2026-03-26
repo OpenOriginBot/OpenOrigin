@@ -12,8 +12,8 @@ export default function AppShell() {
     <div className="app-shell">
       <aside className="sidebar">
         <div className="sidebar-brand">
-          <span className="brand-icon">🦧</span>
-          <span className="brand-name">小猿工作台</span>
+          <span className="brand-icon">◈</span>
+          <span className="brand-name">OpenOrigin</span>
         </div>
         <nav className="sidebar-nav">
           {NAV_ITEMS.map(item => (
