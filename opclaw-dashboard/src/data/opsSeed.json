@@ -1,0 +1,44 @@
+{
+  "tasks": [
+    {
+      "id": "t1",
+      "title": "确认灯带客户订单发货时间",
+      "description": "来自1688买家的询单，需确认库存和交期后回复",
+      "status": "in_progress",
+      "dueDate": "2026-03-27",
+      "assignee": "老板",
+      "priority": "high",
+      "createdAt": "2026-03-26T08:00:00Z"
+    },
+    {
+      "id": "t2",
+      "title": "整理上周客户咨询记录",
+      "description": "汇总各平台询单，分析常见问题",
+      "status": "todo",
+      "dueDate": "2026-03-28",
+      "assignee": "小猿",
+      "priority": "medium",
+      "createdAt": "2026-03-26T09:00:00Z"
+    },
+    {
+      "id": "t3",
+      "title": "跟进物流异常件",
+      "description": "单号SF123456789，买家反馈5天未收到",
+      "status": "blocked",
+      "dueDate": "2026-03-26",
+      "assignee": "小猿",
+      "priority": "high",
+      "createdAt": "2026-03-25T14:00:00Z"
+    },
+    {
+      "id": "t4",
+      "title": "对比三家5050灯带供应商报价",
+      "description": "收集1688上三家供应商的60灯/米规格报价",
+      "status": "done",
+      "dueDate": "2026-03-25",
+      "assignee": "小猿",
+      "priority": "medium",
+      "createdAt": "2026-03-24T10:00:00Z"
+    }
+  ]
+}

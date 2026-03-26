@@ -1,0 +1,144 @@
+.task-manager { max-width: 900px; }
+
+/* Header */
+.module-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.module-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+
+.module-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Stats */
+.stats-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.stat-num {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.stat-blue .stat-num { color: #2563eb; }
+.stat-red .stat-num { color: #ef4444; }
+.stat-green .stat-num { color: #22c55e; }
+.stat-gray .stat-num { color: #64748b; }
+
+/* Task cards */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-card { transition: box-shadow 0.15s; }
+.task-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.task-overdue { border-left: 3px solid #ef4444; }
+
+.task-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  gap: 12px;
+}
+
+.task-left { flex: 1; }
+
+.task-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.due-date, .assignee {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.due-date.overdue { color: #ef4444; font-weight: 600; }
+
+.task-chevron {
+  color: #cbd5e1;
+  font-size: 11px;
+  padding-top: 2px;
+}
+
+.task-expanded {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.task-desc {
+  font-size: 13px;
+  color: #475569;
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.action-label {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-right: 4px;
+}
+
+.action-right {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.error-msg {
+  color: #ef4444;
+  padding: 20px;
+  font-size: 14px;
+}
