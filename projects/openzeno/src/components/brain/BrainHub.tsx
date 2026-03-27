@@ -1,6 +1,7 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { PageHeader } from '../PageHeader';
+import { TeamHealthPanel, DelegateQueue, RecentMeetingCard } from '../team';
 import styles from './BrainHub.module.css';
 
 interface HubCard {
@@ -128,6 +129,15 @@ export function BrainHub() {
         title="大脑模块"
         description="操作系统的知识中心"
       />
+
+      {/* Team Health + Recent Meeting + Delegate Queue */}
+      <div className={styles.teamSection}>
+        <TeamHealthPanel />
+        <div className={styles.teamSubGrid}>
+          <RecentMeetingCard />
+          <DelegateQueue />
+        </div>
+      </div>
 
       {/* Data Overview Cards */}
       <div className={styles.dataGrid}>

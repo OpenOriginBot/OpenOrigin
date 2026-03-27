@@ -4,6 +4,7 @@ import { OpsPage } from './components/ops';
 import { BrainPage, BrainHub, MemoryViewer, BriefingArchive, SkillsDirectory, CronHealth } from './components/brain';
 import { LabPage, PrototypePortfolio, IdeaGallery, ResearchDashboard } from './components/lab';
 import { ErrorBoundary } from './components/common';
+import { MeetingsPage } from './components/meetings/MeetingsPage';
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="lab/prototypes" element={<PrototypePortfolio />} />
             <Route path="lab/ideas" element={<IdeaGallery />} />
             <Route path="lab/research" element={<ResearchDashboard />} />
+            <Route path="meetings" element={<MeetingsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

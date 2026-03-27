@@ -3,6 +3,11 @@
   margin: 0 auto;
 }
 
+.headerActions {
+  display: flex;
+  gap: 8px;
+}
+
 .addBtn {
   background: #3b82f6;
   color: white;
@@ -17,6 +22,170 @@
 
 .addBtn:hover {
   background: #2563eb;
+}
+
+.orgChartBtn {
+  background: white;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.orgChartBtn:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.orgChartBtn.active {
+  background: #1e293b;
+  color: white;
+  border-color: #1e293b;
+}
+
+.orgChartSection {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.orgChartTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+
+.orgChartGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .orgChartGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.completionStats {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.completionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.completionGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.completionItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.completionName {
+  font-size: 13px;
+  color: #374151;
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.completionBar {
+  flex: 1;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.completionFill {
+  height: 100%;
+  background: var(--dept-color, #6b7280);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.completionValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  width: 40px;
+  text-align: right;
+}
+
+/* Stats Overview */
+.statsOverview {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.statCard {
+  background: white;
+  border-radius: 8px;
+  padding: 12px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.statCard .statValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.statCard .statLabel {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.statCard.overdue {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.statCard.overdue .statValue {
+  color: #ef4444;
+}
+
+.statValue.todo {
+  color: #94a3b8;
+}
+
+.statValue.inProgress {
+  color: #3b82f6;
+}
+
+.statValue.review {
+  color: #f59e0b;
+}
+
+.statValue.done {
+  color: #10b981;
 }
 
 .filters {

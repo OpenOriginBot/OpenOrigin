@@ -8,6 +8,7 @@ interface BottomDockProps {
 const navItems = [
   { path: '/', icon: '📋', label: '运营', emoji: '⚡' },
   { path: '/brain', icon: '🧠', label: '大脑', emoji: '🧠' },
+  { path: '/meetings', icon: '📅', label: '会议', emoji: '📅' },
   { path: '/lab', icon: '🧪', label: '实验室', emoji: '🧪' },
 ];
 

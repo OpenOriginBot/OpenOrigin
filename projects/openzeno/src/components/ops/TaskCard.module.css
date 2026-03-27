@@ -2,8 +2,21 @@
   background: white;
   border-radius: 12px;
   padding: 20px;
+  padding-left: 24px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.deptAccent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--dept-color, #6b7280);
+  border-radius: 12px 0 0 12px;
 }
 
 .card:hover {
@@ -128,4 +141,65 @@
 .dropdownItem.active {
   background: #eff6ff;
   color: #3b82f6;
+}
+
+/* Overdue styles */
+.card.overdue {
+  border: 2px solid #ef4444;
+  background: linear-gradient(to bottom, #fef2f2, white);
+}
+
+.overdueBadge {
+  position: absolute;
+  top: -10px;
+  right: 12px;
+  background: #ef4444;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.description {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 12px;
+  line-height: 1.4;
+}
+
+.deliverables {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.deliverablesLink {
+  font-size: 12px;
+  color: #3b82f6;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deliverablesLink:hover {
+  text-decoration: underline;
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+  padding: 8px;
+  background: #f9fafb;
+  border-radius: 6px;
+}
+
+.noteContent {
+  font-size: 12px;
+  color: #374151;
+  line-height: 1.4;
 }

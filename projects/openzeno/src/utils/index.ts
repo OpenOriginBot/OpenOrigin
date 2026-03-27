@@ -41,7 +41,9 @@ export const priorityColors: Record<string, string> = {
 // Status color mapping for tasks
 export const taskStatusColors: Record<string, string> = {
   pending: '#94a3b8',
+  todo: '#94a3b8',
   in_progress: '#3b82f6',
+  review: '#f59e0b',
   done: '#10b981',
   blocked: '#ef4444',
 };

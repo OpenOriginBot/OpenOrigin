@@ -30,3 +30,8 @@
 # 描述: 从 memory/ 中分析夜间活动，生成新的创意想法
 # 运行: 每天 06:00（在简报之前）
 0 6 * * * bash /root/.openclaw/workspace/scripts/cron/nightly-build/collect-ideas.sh >> /root/.openclaw/workspace/scripts/logs/collect-ideas.log 2>&1
+
+# 任务 6：高管晨会
+# 描述: 并行拉起3名主管收集汇报，生成会议纪要
+# 运行: 工作日上午 08:30
+30 8 * * 1-5 bash /root/.openclaw/workspace/scripts/cron/morning-meeting.sh >> /root/.openclaw/workspace/scripts/logs/morning-meeting.log 2>&1

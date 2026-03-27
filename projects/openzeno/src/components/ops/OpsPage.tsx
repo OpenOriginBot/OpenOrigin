@@ -1,15 +1,14 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useOpsTasks } from '../../hooks/useOpsTasks';
-import { OpsTask } from '../../types';
+import { usePMTasks } from '../../hooks/usePMTasks';
+import { PMTask, AgentStatus, TeamStatusResponse } from '../../types';
 import { TaskCard } from './TaskCard';
 import { TaskForm } from './TaskForm';
+import { TaskFilters, FilterStatus, FilterPriority } from './TaskFilters';
 import { EmptyState, Loading } from '../common';
 import { PageHeader } from '../PageHeader';
+import { AgentStatusCard } from '../team';
 import styles from './OpsPage.module.css';
-
-type FilterStatus = OpsTask['status'] | 'all';
-type FilterPriority = OpsTask['priority'] | 'all';
 
 // Night overview data types
 interface BackupStatus {
@@ -28,16 +27,18 @@ interface CronHealthData {
 }
 
 export function OpsPage() {
-  const { tasks, loading, addTask, updateTask, deleteTask, updateStatus } = useOpsTasks();
+  const { tasks, stats, agents, loading, addTask, updateTask, deleteTask, updateStatus } = usePMTasks();
   const [statusFilter, setStatusFilter] = useState<FilterStatus>('all');
   const [priorityFilter, setPriorityFilter] = useState<FilterPriority>('all');
   const [assigneeFilter, setAssigneeFilter] = useState<string>('all');
   const [showForm, setShowForm] = useState(false);
-  const [editingTask, setEditingTask] = useState<OpsTask | null>(null);
+  const [editingTask, setEditingTask] = useState<PMTask | null>(null);
   
   // Night overview state
   const [cronHealth, setCronHealth] = useState<CronHealthData | null>(null);
   const [nightOverviewLoading, setNightOverviewLoading] = useState(true);
+  const [teamAgents, setTeamAgents] = useState<AgentStatus[]>([]);
+  const [showOrgChart, setShowOrgChart] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,40 +52,43 @@ export function OpsPage() {
       .catch(() => {
         setNightOverviewLoading(false);
       });
-  }, []);
 
-  const assignees = useMemo(() => {
-    const set = new Set(tasks.map(t => t.assignee));
-    return ['all', ...Array.from(set)];
-  }, [tasks]);
+    // Fetch team status for org chart
+    fetch('/api/team/status')
+      .then(r => r.json())
+      .then((data: TeamStatusResponse) => {
+        setTeamAgents(data.agents);
+      })
+      .catch(() => {});
+  }, []);
 
   const filteredTasks = useMemo(() => {
     return tasks.filter(task => {
       if (statusFilter !== 'all' && task.status !== statusFilter) return false;
       if (priorityFilter !== 'all' && task.priority !== priorityFilter) return false;
-      if (assigneeFilter !== 'all' && task.assignee !== assigneeFilter) return false;
+      if (assigneeFilter !== 'all' && task.assigneeAgentId !== assigneeFilter) return false;
       return true;
     });
   }, [tasks, statusFilter, priorityFilter, assigneeFilter]);
 
-  const handleSubmit = (taskData: Omit<OpsTask, 'id'>) => {
+  const handleSubmit = async (taskData: Omit<PMTask, 'id'>) => {
     if (editingTask) {
-      updateTask(editingTask.id, taskData);
+      await updateTask(editingTask.id, taskData);
     } else {
-      addTask(taskData);
+      await addTask(taskData);
     }
     setShowForm(false);
     setEditingTask(null);
   };
 
-  const handleEdit = (task: OpsTask) => {
+  const handleEdit = (task: PMTask) => {
     setEditingTask(task);
     setShowForm(true);
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     if (confirm('确定要删除这个任务吗？')) {
-      deleteTask(id);
+      await deleteTask(id);
     }
   };
 
@@ -117,14 +121,99 @@ export function OpsPage() {
     <div className={styles.page}>
       <PageHeader
         icon="📋"
-        title="运营任务"
-        description="管理客户交付任务，追踪状态与负责人"
+        title="项目管理看板"
+        description="多智能体团队唯一可信数据源"
         actions={
-          <button className={styles.addBtn} onClick={() => setShowForm(true)}>
-            + 新建任务
-          </button>
+          <div className={styles.headerActions}>
+            <button
+              className={`${styles.orgChartBtn} ${showOrgChart ? styles.active : ''}`}
+              onClick={() => setShowOrgChart(!showOrgChart)}
+            >
+              {showOrgChart ? '隐藏组织架构' : '显示组织架构'}
+            </button>
+            <button className={styles.addBtn} onClick={() => setShowForm(true)}>
+              + 新建任务
+            </button>
+          </div>
         }
       />
+
+      {/* Org Chart Section */}
+      {showOrgChart && (
+        <div className={styles.orgChartSection}>
+          <div className={styles.orgChartTitle}>🏢 组织架构</div>
+          <div className={styles.orgChartGrid}>
+            {teamAgents.map(agent => (
+              <AgentStatusCard
+                key={agent.id}
+                agent={agent}
+                onClick={() => {
+                  // Filter tasks by this agent
+                  setAssigneeFilter(agent.id);
+                  setShowOrgChart(false);
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Stats Overview */}
+      {stats && (
+        <div className={styles.statsOverview}>
+          <div className={styles.statCard}>
+            <span className={styles.statValue}>{stats.total}</span>
+            <span className={styles.statLabel}>总任务</span>
+          </div>
+          <div className={styles.statCard}>
+            <span className={`${styles.statValue} ${styles.todo}`}>{stats.byStatus?.todo || 0}</span>
+            <span className={styles.statLabel}>待办</span>
+          </div>
+          <div className={styles.statCard}>
+            <span className={`${styles.statValue} ${styles.inProgress}`}>{stats.byStatus?.in_progress || 0}</span>
+            <span className={styles.statLabel}>进行中</span>
+          </div>
+          <div className={styles.statCard}>
+            <span className={`${styles.statValue} ${styles.review}`}>{stats.byStatus?.review || 0}</span>
+            <span className={styles.statLabel}>审核</span>
+          </div>
+          <div className={styles.statCard}>
+            <span className={`${styles.statValue} ${styles.done}`}>{stats.byStatus?.done || 0}</span>
+            <span className={styles.statLabel}>已完成</span>
+          </div>
+          <div className={`${styles.statCard} ${styles.overdue}`}>
+            <span className={styles.statValue}>{stats.overdue || 0}</span>
+            <span className={styles.statLabel}>逾期</span>
+          </div>
+        </div>
+      )}
+
+      {/* Agent Completion Rate Stats */}
+      {teamAgents.length > 0 && (
+        <div className={styles.completionStats}>
+          <span className={styles.completionTitle}>📊 各主管任务完成率</span>
+          <div className={styles.completionGrid}>
+            {teamAgents.map(agent => (
+              <div
+                key={agent.id}
+                className={styles.completionItem}
+                style={{ '--dept-color': agent.color } as React.CSSProperties}
+              >
+                <span className={styles.completionName}>{agent.emoji} {agent.name.replace(/^[⏱️✨💰]\s*/, '')}</span>
+                <div className={styles.completionBar}>
+                  <div
+                    className={styles.completionFill}
+                    style={{ width: `${agent.completionRate ?? 0}%` }}
+                  />
+                </div>
+                <span className={styles.completionValue}>
+                  {agent.completionRate !== null ? `${agent.completionRate}%` : '—'}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Night Overview Section */}
       <div className={styles.nightOverview}>
@@ -202,37 +291,15 @@ export function OpsPage() {
         )}
       </div>
 
-      <div className={styles.filters}>
-        <div className={styles.filterGroup}>
-          <label>状态</label>
-          <select value={statusFilter} onChange={e => setStatusFilter(e.target.value as FilterStatus)}>
-            <option value="all">全部</option>
-            <option value="pending">待处理</option>
-            <option value="in_progress">进行中</option>
-            <option value="done">已完成</option>
-            <option value="blocked">已阻塞</option>
-          </select>
-        </div>
-
-        <div className={styles.filterGroup}>
-          <label>优先级</label>
-          <select value={priorityFilter} onChange={e => setPriorityFilter(e.target.value as FilterPriority)}>
-            <option value="all">全部</option>
-            <option value="high">高</option>
-            <option value="medium">中</option>
-            <option value="low">低</option>
-          </select>
-        </div>
-
-        <div className={styles.filterGroup}>
-          <label>负责人</label>
-          <select value={assigneeFilter} onChange={e => setAssigneeFilter(e.target.value)}>
-            {assignees.map(a => (
-              <option key={a} value={a}>{a === 'all' ? '全部' : a}</option>
-            ))}
-          </select>
-        </div>
-      </div>
+      <TaskFilters
+        agents={agents}
+        statusFilter={statusFilter}
+        priorityFilter={priorityFilter}
+        assigneeFilter={assigneeFilter}
+        onStatusChange={v => setStatusFilter(v as FilterStatus)}
+        onPriorityChange={v => setPriorityFilter(v as FilterPriority)}
+        onAssigneeChange={setAssigneeFilter}
+      />
 
       {filteredTasks.length === 0 ? (
         <EmptyState

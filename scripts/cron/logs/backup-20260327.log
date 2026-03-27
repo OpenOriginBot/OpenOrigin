@@ -7415,3 +7415,121 @@ To github.com:OpenOriginBot/OpenOrigin.git
 [2026-03-27 12:09:12] ========== 开始备份任务 ==========
 [2026-03-27 12:09:12] 暂存变更...
 [2026-03-27 12:09:12] 暂存变更...
+[2026-03-27 12:09:12] 提交: 📝 [2026-03-27 12:09] 未跟踪 33 个文件
+[2026-03-27 12:09:12] 提交: 📝 [2026-03-27 12:09] 未跟踪 33 个文件
+[master 2927bfc] 📝 [2026-03-27 12:09] 未跟踪 33 个文件
+ 71 files changed, 14856 insertions(+), 502 deletions(-)
+ create mode 100644 docs/AI-ORG-CHART.md
+ delete mode 100755 projects/openzeno/dist/assets/index-B_RQrnPB.css
+ delete mode 100755 projects/openzeno/dist/assets/index-CyfujbAM.js
+ mode change 100755 => 100644 projects/openzeno/dist/briefings/2026-03-26.md
+ mode change 100755 => 100644 projects/openzeno/dist/briefings/2026-03-27.md
+ mode change 100755 => 100644 projects/openzeno/dist/index.html
+ create mode 100644 projects/openzeno/public/research/ai-industry.json
+ create mode 100644 projects/openzeno/public/research/competitor-research.json
+ create mode 100644 projects/openzeno/public/research/content-ideas.json
+ create mode 100644 projects/openzeno/src/components/BottomDock.module.css
+ create mode 100644 projects/openzeno/src/components/BottomDock.tsx
+ create mode 100644 projects/openzeno/src/components/PageHeader.module.css
+ create mode 100644 projects/openzeno/src/components/PageHeader.tsx
+ create mode 100644 projects/openzeno/src/components/SettingsModal.module.css
+ create mode 100644 projects/openzeno/src/components/SettingsModal.tsx
+ create mode 100644 projects/openzeno/src/components/brain/BrainHub.module.css
+ create mode 100644 projects/openzeno/src/components/brain/BrainHub.tsx
+ create mode 100644 projects/openzeno/src/components/brain/BriefingArchive.module.css
+ create mode 100644 projects/openzeno/src/components/brain/BriefingArchive.tsx
+ create mode 100644 projects/openzeno/src/components/brain/CronHealth.module.css
+ create mode 100644 projects/openzeno/src/components/brain/CronHealth.tsx
+ create mode 100644 projects/openzeno/src/components/brain/MemoryViewer.module.css
+ create mode 100644 projects/openzeno/src/components/brain/MemoryViewer.tsx
+ create mode 100644 projects/openzeno/src/components/brain/SkillsDirectory.module.css
+ create mode 100644 projects/openzeno/src/components/brain/SkillsDirectory.tsx
+ create mode 100644 projects/openzeno/src/components/lab/DashboardCard.module.css
+ create mode 100644 projects/openzeno/src/components/lab/DashboardCard.tsx
+ create mode 100644 projects/openzeno/src/components/lab/IdeaGallery.module.css
+ create mode 100644 projects/openzeno/src/components/lab/IdeaGallery.tsx
+ create mode 100644 projects/openzeno/src/components/lab/PrototypePortfolio.module.css
+ create mode 100644 projects/openzeno/src/components/lab/PrototypePortfolio.tsx
+ create mode 100644 projects/openzeno/src/components/lab/ResearchDashboard.module.css
+ create mode 100644 projects/openzeno/src/components/lab/ResearchDashboard.tsx
+ create mode 100644 projects/openzeno/src/data/ideas.json
+ create mode 100644 projects/openzeno/src/data/prototypes.json
+ create mode 100644 projects/openzeno/vite.config.mjs
+ delete mode 100644 projects/openzeno/vite.config.ts
+ create mode 100644 scripts/cron/logs/collect-ideas-20260327.log
+ create mode 100755 scripts/cron/nightly-build/collect-ideas.sh
+ create mode 100644 scripts/openzclaw-crontab
+ create mode 100644 skills/MANAGEMENT.md
+ create mode 100644 skills/README.md
+ create mode 100644 skills/SKILL-TEMPLATE.md
+ create mode 100644 skills/index.json
+ create mode 100644 skills/outreach/SKILL.md
+ create mode 100644 skills/outreach/config.json
+ create mode 100644 skills/proposal/SKILL.md
+ create mode 100644 skills/proposal/config.json
+ create mode 100644 skills/reporting/SKILL.md
+ create mode 100644 skills/reporting/config.json
+[master 2927bfc] 📝 [2026-03-27 12:09] 未跟踪 33 个文件
+ 71 files changed, 14856 insertions(+), 502 deletions(-)
+ create mode 100644 docs/AI-ORG-CHART.md
+ delete mode 100755 projects/openzeno/dist/assets/index-B_RQrnPB.css
+ delete mode 100755 projects/openzeno/dist/assets/index-CyfujbAM.js
+ mode change 100755 => 100644 projects/openzeno/dist/briefings/2026-03-26.md
+ mode change 100755 => 100644 projects/openzeno/dist/briefings/2026-03-27.md
+ mode change 100755 => 100644 projects/openzeno/dist/index.html
+ create mode 100644 projects/openzeno/public/research/ai-industry.json
+ create mode 100644 projects/openzeno/public/research/competitor-research.json
+ create mode 100644 projects/openzeno/public/research/content-ideas.json
+ create mode 100644 projects/openzeno/src/components/BottomDock.module.css
+ create mode 100644 projects/openzeno/src/components/BottomDock.tsx
+ create mode 100644 projects/openzeno/src/components/PageHeader.module.css
+ create mode 100644 projects/openzeno/src/components/PageHeader.tsx
+ create mode 100644 projects/openzeno/src/components/SettingsModal.module.css
+ create mode 100644 projects/openzeno/src/components/SettingsModal.tsx
+ create mode 100644 projects/openzeno/src/components/brain/BrainHub.module.css
+ create mode 100644 projects/openzeno/src/components/brain/BrainHub.tsx
+ create mode 100644 projects/openzeno/src/components/brain/BriefingArchive.module.css
+ create mode 100644 projects/openzeno/src/components/brain/BriefingArchive.tsx
+ create mode 100644 projects/openzeno/src/components/brain/CronHealth.module.css
+ create mode 100644 projects/openzeno/src/components/brain/CronHealth.tsx
+ create mode 100644 projects/openzeno/src/components/brain/MemoryViewer.module.css
+ create mode 100644 projects/openzeno/src/components/brain/MemoryViewer.tsx
+ create mode 100644 projects/openzeno/src/components/brain/SkillsDirectory.module.css
+ create mode 100644 projects/openzeno/src/components/brain/SkillsDirectory.tsx
+ create mode 100644 projects/openzeno/src/components/lab/DashboardCard.module.css
+ create mode 100644 projects/openzeno/src/components/lab/DashboardCard.tsx
+ create mode 100644 projects/openzeno/src/components/lab/IdeaGallery.module.css
+ create mode 100644 projects/openzeno/src/components/lab/IdeaGallery.tsx
+ create mode 100644 projects/openzeno/src/components/lab/PrototypePortfolio.module.css
+ create mode 100644 projects/openzeno/src/components/lab/PrototypePortfolio.tsx
+ create mode 100644 projects/openzeno/src/components/lab/ResearchDashboard.module.css
+ create mode 100644 projects/openzeno/src/components/lab/ResearchDashboard.tsx
+ create mode 100644 projects/openzeno/src/data/ideas.json
+ create mode 100644 projects/openzeno/src/data/prototypes.json
+ create mode 100644 projects/openzeno/vite.config.mjs
+ delete mode 100644 projects/openzeno/vite.config.ts
+ create mode 100644 scripts/cron/logs/collect-ideas-20260327.log
+ create mode 100755 scripts/cron/nightly-build/collect-ideas.sh
+ create mode 100644 scripts/openzclaw-crontab
+ create mode 100644 skills/MANAGEMENT.md
+ create mode 100644 skills/README.md
+ create mode 100644 skills/SKILL-TEMPLATE.md
+ create mode 100644 skills/index.json
+ create mode 100644 skills/outreach/SKILL.md
+ create mode 100644 skills/outreach/config.json
+ create mode 100644 skills/proposal/SKILL.md
+ create mode 100644 skills/proposal/config.json
+ create mode 100644 skills/reporting/SKILL.md
+ create mode 100644 skills/reporting/config.json
+[2026-03-27 12:09:12] 推送到远程仓库...
+[2026-03-27 12:09:12] 推送到远程仓库...
+To github.com:OpenOriginBot/OpenOrigin.git
+   8dcfd89..2927bfc  master -> master
+To github.com:OpenOriginBot/OpenOrigin.git
+   8dcfd89..2927bfc  master -> master
+[2026-03-27 12:09:16] ========== 备份完成 ==========
+[2026-03-27 12:09:16] ========== 备份完成 ==========
+[2026-03-27 18:00:01] ========== 开始备份任务 ==========
+[2026-03-27 18:00:01] ========== 开始备份任务 ==========
+[2026-03-27 18:00:01] 暂存变更...
+[2026-03-27 18:00:01] 暂存变更...

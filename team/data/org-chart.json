@@ -1,0 +1,54 @@
+{
+  "orgName": "灯带电商代运营团队",
+  "version": "1.0.0",
+  "lastUpdated": "2026-03-27",
+  "ceo": {
+    "id": "agent-ceo",
+    "name": "总调度智能体",
+    "role": "CEO",
+    "department": "决策层",
+    "directReports": ["agent-ops-head", "agent-mkt-head", "agent-rev-head"],
+    "responsibilities": ["全局决策", "任务分发", "进度追踪", "向上汇报"]
+  },
+  "departments": [
+    {
+      "id": "agent-ops-head",
+      "name": "运营主管",
+      "role": "COO",
+      "department": "运营部",
+      "directReports": ["agent-order-specialist", "agent-inventory-specialist", "agent-logistics-specialist"],
+      "responsibilities": ["订单管理", "库存监控", "物流追踪", "供应商协调"],
+      "autonomous": ["48h发货率管控", "库存预警调度"],
+      "escalate": ["退款审批", "供应商更换", "促销活动定价"]
+    },
+    {
+      "id": "agent-mkt-head",
+      "name": "营销主管",
+      "role": "CMO",
+      "department": "营销部",
+      "directReports": ["agent-content-specialist", "agent-cs-specialist"],
+      "responsibilities": ["产品呈现", "流量转化", "客服售后", "评价管理"],
+      "autonomous": ["详情页优化", "差评公关", "催好评策略"],
+      "escalate": ["大幅调价", "优惠券额度", "客户投诉升级"]
+    },
+    {
+      "id": "agent-rev-head",
+      "name": "营收主管",
+      "role": "CRO",
+      "department": "营收部",
+      "directReports": ["agent-data-analyst", "agent-supplier-manager"],
+      "responsibilities": ["定价策略", "供应商管理", "成本控制", "销售分析"],
+      "autonomous": ["成本核算", "竞品价格监控", "常规补货决策"],
+      "escalate": ["新供应商准入", "大额采购", "亏损订单审批"]
+    }
+  ],
+  "specialists": [
+    {"id": "agent-order-specialist", "name": "订单专员", "department": "运营部", "status": "placeholder"},
+    {"id": "agent-inventory-specialist", "name": "库存专员", "department": "运营部", "status": "placeholder"},
+    {"id": "agent-logistics-specialist", "name": "物流专员", "department": "运营部", "status": "placeholder"},
+    {"id": "agent-content-specialist", "name": "内容专员", "department": "营销部", "status": "placeholder"},
+    {"id": "agent-cs-specialist", "name": "客服专员", "department": "营销部", "status": "placeholder"},
+    {"id": "agent-data-analyst", "name": "数据分析师", "department": "营收部", "status": "placeholder"},
+    {"id": "agent-supplier-manager", "name": "供应商经理", "department": "营收部", "status": "placeholder"}
+  ]
+}

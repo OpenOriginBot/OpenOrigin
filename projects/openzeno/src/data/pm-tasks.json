@@ -1,0 +1,61 @@
+[
+  {
+    "id": "task-001",
+    "title": "优化发货时效看板",
+    "description": "将48小时发货率提升至95%",
+    "assigneeAgentId": "agent-ops-head",
+    "assigneeName": "⏱️ 运营主管",
+    "status": "in_progress",
+    "priority": "high",
+    "createdAt": "2026-03-27T14:00:00Z",
+    "updatedAt": "2026-03-27T14:31:55.645Z",
+    "dueDate": "2026-04-01",
+    "deliverables": "",
+    "notes": [
+      {
+        "content": "开始处理发货时效优化",
+        "timestamp": "2026-03-27T14:31:55.645Z",
+        "operator": "ops-head"
+      }
+    ],
+    "history": [
+      {
+        "field": "status",
+        "from": "todo",
+        "to": "in_progress",
+        "timestamp": "2026-03-27T14:31:55.645Z",
+        "operator": "ops-head"
+      }
+    ]
+  },
+  {
+    "id": "task-002",
+    "title": "更新产品详情页",
+    "description": "优化灯带产品主图和描述",
+    "assigneeAgentId": "agent-mkt-head",
+    "assigneeName": "✨ 营销主管",
+    "status": "todo",
+    "priority": "medium",
+    "createdAt": "2026-03-27T14:00:00Z",
+    "updatedAt": "2026-03-27T14:00:00Z",
+    "dueDate": "2026-04-05",
+    "deliverables": "",
+    "notes": [],
+    "history": []
+  },
+  {
+    "id": "task-003",
+    "title": "分析季度毛利率",
+    "description": "Q1成本结构与利润分析报告",
+    "assigneeAgentId": "agent-rev-head",
+    "assigneeName": "💰 营收主管",
+    "status": "todo",
+    "priority": "high",
+    "createdAt": "2026-03-27T14:00:00Z",
+    "updatedAt": "2026-03-27T14:00:00Z",
+    "dueDate": "2026-04-03",
+    "deliverables": "",
+    "notes": [],
+    "history": []
+  }
+]

@@ -1,0 +1,53 @@
+.container {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #e5e7eb;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+.timestamp {
+  color: #9ca3af;
+  font-size: 11px;
+  min-width: 90px;
+}
+
+.field {
+  background: #f3f4f6;
+  color: #6b7280;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.change {
+  color: #374151;
+  font-weight: 500;
+}
+
+.operator {
+  color: #9ca3af;
+  margin-left: auto;
+  font-size: 11px;
+}
