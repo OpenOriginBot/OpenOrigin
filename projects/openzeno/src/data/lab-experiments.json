@@ -1,0 +1,30 @@
+[
+  {
+    "id": "exp_001",
+    "name": "新款RGB灯带详情页测试",
+    "status": "active",
+    "nextAction": "3月28日分析点击转化数据",
+    "createdAt": "2026-03-20"
+  },
+  {
+    "id": "exp_002",
+    "name": "满减优惠券效果评估",
+    "status": "paused",
+    "nextAction": "等待运营活动结束后复盘",
+    "createdAt": "2026-03-15"
+  },
+  {
+    "id": "exp_003",
+    "name": "短视频带货渠道探索",
+    "status": "active",
+    "nextAction": "对接达人资源",
+    "createdAt": "2026-03-18"
+  },
+  {
+    "id": "exp_004",
+    "name": "智能客服机器人试点",
+    "status": "completed",
+    "nextAction": "已并入常规客服流程",
+    "createdAt": "2026-02-01"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "task_001",
+    "title": "处理订单 #16880123 发货",
+    "status": "pending",
+    "dueDate": "2026-03-28",
+    "assignee": "小李",
+    "priority": "high"
+  },
+  {
+    "id": "task_002",
+    "title": "核对供应商来货清单",
+    "status": "in_progress",
+    "dueDate": "2026-03-27",
+    "assignee": "小王",
+    "priority": "medium"
+  },
+  {
+    "id": "task_003",
+    "title": "更新主图点击率数据",
+    "status": "done",
+    "dueDate": "2026-03-26",
+    "assignee": "小张",
+    "priority": "low"
+  },
+  {
+    "id": "task_004",
+    "title": "回复差评 #4521",
+    "status": "blocked",
+    "dueDate": "2026-03-27",
+    "assignee": "小李",
+    "priority": "high"
+  }
+]
