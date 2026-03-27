@@ -1,21 +1,6 @@
 .page {
-  padding: 24px;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.pageTitle {
-  font-size: 24px;
-  font-weight: 700;
-  color: #1f2937;
-  margin: 0;
 }
 
 .addBtn {
@@ -72,4 +57,158 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 16px;
+}
+
+/* Night Overview Styles */
+.nightOverview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.nightOverviewTitle {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.nightOverviewLoading {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.nightOverviewGrid {
+  display: contents;
+}
+
+.nightOverviewCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 0;
+}
+
+.nightOverviewCardLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.nightOverviewStats {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.nightOverviewStat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.nightOverviewLink {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  padding: 4px 8px;
+  margin: -4px -8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.nightOverviewLink:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.linkHint {
+  font-size: 10px;
+  color: #8b5cf6;
+  margin-top: 2px;
+}
+
+.statValue {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.statValue.healthy {
+  color: #4ade80;
+}
+
+.statValue.failed {
+  color: #f87171;
+}
+
+.statLabel {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+
+.nightOverviewEmpty {
+  font-size: 12px;
+  color: #64748b;
+  font-style: italic;
+}
+
+.backupStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.backupTime {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.backupIndicator {
+  font-size: 14px;
+}
+
+.backupIndicator.success {
+  color: #4ade80;
+}
+
+.backupIndicator.error {
+  color: #f87171;
+}
+
+.backupFiles {
+  font-size: 11px;
+  color: #64748b;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.serviceStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.serviceIndicator {
+  font-size: 16px;
+}
+
+.serviceLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
 }

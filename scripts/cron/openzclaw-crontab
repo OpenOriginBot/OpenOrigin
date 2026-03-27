@@ -8,6 +8,11 @@ SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 WORKSPACE=/root/.openclaw/workspace
 
+# GitHub 配置（从 .bashrc 读取）
+GIT_REPO_URL='git@github.com:OpenOriginBot/OpenOrigin.git'
+TELEGRAM_BOT_TOKEN='8272532401:AAENvD6mXrkM2fu8PRW2_CYGQ4py_1-j8y8'
+TELEGRAM_CHAT_ID='6810379425'
+
 # ============================================================
 # 任务 1：私有仓库备份
 # 频率：每 6 小时一次

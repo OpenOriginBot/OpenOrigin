@@ -1,0 +1,60 @@
+{
+  "id": "skill-reporting-001",
+  "name": "数据报表",
+  "nameEn": "data-reporting",
+  "version": "v1.0.0",
+  "status": "active",
+  "category": "data-analytics",
+  "owner": "[待定]",
+  "createdAt": "2026-03-27",
+  "updatedAt": "2026-03-27",
+
+  "permissions": {
+    "visibility": "public",
+    "allowedAgents": [],
+    "deniedAgents": [],
+    "rateLimit": {
+      "requestsPerHour": 20,
+      "requestsPerDay": 100
+    }
+  },
+
+  "runtime": {
+    "timeout": 120000,
+    "memory": "2048MB",
+    "entryPoint": "index.js"
+  },
+
+  "dependencies": {
+    "skills": [],
+    "packages": []
+  },
+
+  "config": {
+    "supportedReportTypes": [
+      "daily-sales",
+      "weekly-ops",
+      "monthly-business",
+      "inventory-status",
+      "customer-analysis"
+    ],
+    "outputFormats": ["json", "markdown", "html"],
+    "defaultFormat": "markdown",
+    "autoRefresh": {
+      "enabled": true,
+      "intervalMinutes": 60
+    }
+  },
+
+  "metadata": {
+    "description": "自动生成销售、运营、数据分析报表，支持定时推送",
+    "useCases": [
+      "每日销售汇总",
+      "周运营报告",
+      "月度业务复盘",
+      "库存状态追踪",
+      "客户分析"
+    ],
+    "keywords": ["报表", "数据报告", "周报", "日报", "销售报告", "数据看板", "report", "dashboard"]
+  }
+}

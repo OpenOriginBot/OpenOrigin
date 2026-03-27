@@ -1,0 +1,40 @@
+{
+  "id": "research-content-001",
+  "type": "content",
+  "title": "内容创意清单：灯带类目",
+  "date": "2026-03-22",
+  "summary": "围绕灯带产品的内容创意方向和优先级规划",
+  "categories": [
+    {
+      "id": "cat-001",
+      "name": "产品场景展示",
+      "ideas": [
+        { "title": "RGB 灯带同步音乐节奏效果", "platform": "抖音", "priority": "high" },
+        { "title": "橱柜灯带安装教程", "platform": "小红书", "priority": "high" },
+        { "title": "电竞桌沉浸式灯效改造", "platform": "B站", "priority": "medium" }
+      ]
+    },
+    {
+      "id": "cat-002",
+      "name": "用户评价内容化",
+      "ideas": [
+        { "title": "买家秀灯带效果合集", "platform": "抖音", "priority": "high" },
+        { "title": "真实用户安装反馈视频", "platform": "小红书", "priority": "medium" }
+      ]
+    },
+    {
+      "id": "cat-003",
+      "name": "AI 相关内容",
+      "ideas": [
+        { "title": "AI 帮你选灯带颜色", "platform": "小红书", "priority": "medium" },
+        { "title": "用 AI 设计智能灯光场景", "platform": "B站", "priority": "low" }
+      ]
+    }
+  ],
+  "conclusions": [
+    "场景化内容是吸引流量的核心，尤其是家居和电竞场景",
+    "AI 相关内容目前竞争较少，可以作为差异化方向",
+    "小红书适合教程类内容，抖音适合效果展示"
+  ],
+  "source": "平台热词分析 + 内容团队头脑风暴"
+}

@@ -1,140 +1,124 @@
-import { useState, useMemo } from 'react';
-import { useLabExperiments } from '../../hooks/useLabExperiments';
-import { LabExperiment } from '../../types';
-import { ExperimentCard } from './ExperimentCard';
-import { ExperimentForm } from './ExperimentForm';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { DashboardCard } from './DashboardCard';
 import { EmptyState, Loading } from '../common';
-import { experimentStatusColors } from '../../utils';
+import { PageHeader } from '../PageHeader';
 import styles from './LabPage.module.css';
 
-type FilterStatus = LabExperiment['status'] | 'all';
+interface DashboardData {
+  ideas: {
+    total: number;
+    thisWeek: number;
+    latestTitle: string | null;
+  };
+  prototypes: {
+    running: number;
+    total: number;
+    latestRunningName: string | null;
+  };
+  builds: {
+    latestStatus: 'success' | 'failed';
+    latestBuild: {
+      id: string;
+      timestamp: string;
+      message: string;
+      status: string;
+    };
+  };
+  research: {
+    latestDate: string | null;
+    conclusionCount: number;
+    totalProjects: number;
+  };
+}
 
 export function LabPage() {
-  const { experiments, loading, addExperiment, updateExperiment, deleteExperiment } = useLabExperiments();
-  const [statusFilter, setStatusFilter] = useState<FilterStatus>('all');
-  const [showForm, setShowForm] = useState(false);
-  const [editingExp, setEditingExp] = useState<LabExperiment | null>(null);
+  const [data, setData] = useState<DashboardData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-  const filteredExperiments = useMemo(() => {
-    if (statusFilter === 'all') return experiments;
-    return experiments.filter(e => e.status === statusFilter);
-  }, [experiments, statusFilter]);
+  useEffect(() => {
+    fetch('/api/lab/dashboard')
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then(setData)
+      .catch(e => setError(e.message))
+      .finally(() => setLoading(false));
+  }, []);
 
-  const groupedByStatus = useMemo(() => {
-    const groups: Record<string, LabExperiment[]> = {
-      active: [],
-      paused: [],
-      completed: [],
-      archived: [],
-    };
-    filteredExperiments.forEach(exp => {
-      groups[exp.status].push(exp);
-    });
-    return groups;
-  }, [filteredExperiments]);
+  if (loading) return <Loading text="加载实验室数据..." />;
 
-  const statusLabels: Record<string, string> = {
-    active: '进行中',
-    paused: '已暂停',
-    completed: '已完成',
-    archived: '已归档',
-  };
-
-  const handleSubmit = (expData: Omit<LabExperiment, 'id' | 'createdAt'>) => {
-    if (editingExp) {
-      updateExperiment(editingExp.id, expData);
-    } else {
-      addExperiment(expData);
-    }
-    setShowForm(false);
-    setEditingExp(null);
-  };
-
-  const handleDelete = (id: string) => {
-    if (confirm('确定要删除这个实验吗？')) {
-      deleteExperiment(id);
-    }
-  };
-
-  const handleStatusChange = (id: string, status: LabExperiment['status']) => {
-    updateExperiment(id, { status });
-  };
-
-  if (loading) {
-    return <Loading text="加载实验中..." />;
+  if (error || !data) {
+    return (
+      <div className={styles.page}>
+        <PageHeader icon="🧪" title="实验室" description="创意、原型与研究指挥中心" />
+        <EmptyState icon="⚠️" title="加载失败" description={error || '无法获取数据'} />
+      </div>
+    );
   }
 
   return (
     <div className={styles.page}>
-      <div className={styles.header}>
-        <div>
-          <h1 className={styles.pageTitle}>实验室</h1>
-          <p className={styles.subtitle}>实验与原型追踪</p>
-        </div>
-        <button className={styles.addBtn} onClick={() => setShowForm(true)}>
-          + 新建实验
+      <PageHeader icon="🧪" title="实验室" description="创意、原型与研究指挥中心" />
+
+      <div className={styles.dashboard}>
+        <DashboardCard
+          icon="💡"
+          title="创意"
+          mainStat={data.ideas.total}
+          subStat={`+${data.ideas.thisWeek} 本周新增`}
+          latestItem={data.ideas.latestTitle || undefined}
+          viewAllTo="/lab/ideas"
+          viewAllLabel="创意图库"
+          accentColor="#8b5cf6"
+        />
+
+        <DashboardCard
+          icon="⚡"
+          title="原型"
+          mainStat={data.prototypes.running}
+          subStat={`/ ${data.prototypes.total} total`}
+          latestItem={data.prototypes.latestRunningName || undefined}
+          viewAllTo="/lab/prototypes"
+          viewAllLabel="原型作品集"
+          accentColor="#8b5cf6"
+        />
+
+        <DashboardCard
+          icon="🌙"
+          title="夜间构建"
+          mainStat={data.builds.latestStatus === 'success' ? '✓' : '✗'}
+          subStat={data.builds.latestStatus === 'success' ? '构建成功' : '构建失败'}
+          latestItem={data.builds.latestBuild.message}
+          accentColor={data.builds.latestStatus === 'success' ? '#22c55e' : '#ef4444'}
+        />
+
+        <DashboardCard
+          icon="📚"
+          title="研究"
+          mainStat={data.research.totalProjects}
+          subStat={`${data.research.conclusionCount} 条结论`}
+          latestItem={data.research.latestDate ? `最新: ${data.research.latestDate}` : undefined}
+          viewAllTo="/lab/research"
+          viewAllLabel="研究仪表盘"
+          accentColor="#8b5cf6"
+        />
+      </div>
+
+      <div className={styles.quickLinks}>
+        <button className={styles.quickLink} onClick={() => navigate('/lab/prototypes')}>
+          ⚡ 原型作品集
+        </button>
+        <button className={styles.quickLink} onClick={() => navigate('/lab/ideas')}>
+          💡 创意图库
+        </button>
+        <button className={styles.quickLink} onClick={() => navigate('/lab/research')}>
+          📚 研究仪表盘
         </button>
       </div>
-
-      <div className={styles.filters}>
-        <label>筛选</label>
-        <select value={statusFilter} onChange={e => setStatusFilter(e.target.value as FilterStatus)}>
-          <option value="all">全部状态</option>
-          <option value="active">进行中</option>
-          <option value="paused">已暂停</option>
-          <option value="completed">已完成</option>
-          <option value="archived">已归档</option>
-        </select>
-      </div>
-
-      {experiments.length === 0 ? (
-        <EmptyState
-          icon="🧪"
-          title="暂无实验"
-          description="点击「新建实验」开始追踪你的第一个运营实验"
-          action={{ label: '新建实验', onClick: () => setShowForm(true) }}
-        />
-      ) : (
-        <div className={styles.board}>
-          {(['active', 'paused', 'completed', 'archived'] as const).map(status => {
-            const exps = groupedByStatus[status];
-            if (statusFilter !== 'all' && statusFilter !== status) return null;
-            return (
-              <div key={status} className={styles.column}>
-                <div className={styles.columnHeader}>
-                  <span 
-                    className={styles.columnDot}
-                    style={{ backgroundColor: experimentStatusColors[status] }}
-                  />
-                  <span className={styles.columnTitle}>{statusLabels[status]}</span>
-                  <span className={styles.columnCount}>{exps.length}</span>
-                </div>
-                <div className={styles.columnContent}>
-                  {exps.map(exp => (
-                    <ExperimentCard
-                      key={exp.id}
-                      experiment={exp}
-                      onStatusChange={handleStatusChange}
-                      onDelete={handleDelete}
-                    />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {showForm && (
-        <ExperimentForm
-          experiment={editingExp}
-          onSubmit={handleSubmit}
-          onCancel={() => {
-            setShowForm(false);
-            setEditingExp(null);
-          }}
-        />
-      )}
     </div>
   );
 }

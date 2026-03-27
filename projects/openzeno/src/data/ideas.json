@@ -1,0 +1,94 @@
+{
+  "ideas": [
+    {
+      "id": "idea-001",
+      "title": "智能选品推荐引擎",
+      "summary": "基于销售数据和用户行为，自动推荐高潜力商品，辅助选品决策",
+      "date": "2026-03-26T10:00:00Z",
+      "track": "A",
+      "category": "运营工具",
+      "ratings": {
+        "painPoint": 5,
+        "devEfficiency": 3,
+        "commercialization": 4,
+        "aiAdvantage": 5
+      },
+      "overallScore": 4.3
+    },
+    {
+      "id": "idea-002",
+      "title": "AR 虚拟展厅",
+      "summary": "为灯带产品提供 AR 虚拟安装效果预览，提升转化率",
+      "date": "2026-03-25T14:30:00Z",
+      "track": "B",
+      "category": "用户体验",
+      "ratings": {
+        "painPoint": 4,
+        "devEfficiency": 2,
+        "commercialization": 3,
+        "aiAdvantage": 4
+      },
+      "overallScore": 3.5
+    },
+    {
+      "id": "idea-003",
+      "title": "自动化客服培训系统",
+      "summary": "模拟真实买家咨询场景，训练 AI 客服的话术和应对策略",
+      "date": "2026-03-24T09:00:00Z",
+      "track": "A",
+      "category": "AI应用",
+      "ratings": {
+        "painPoint": 5,
+        "devEfficiency": 4,
+        "commercialization": 5,
+        "aiAdvantage": 5
+      },
+      "overallScore": 4.8
+    },
+    {
+      "id": "idea-004",
+      "title": "动态定价助手",
+      "summary": "根据库存、竞品价格、促销活动自动建议最优定价策略",
+      "date": "2026-03-23T16:00:00Z",
+      "track": "B",
+      "category": "运营工具",
+      "ratings": {
+        "painPoint": 4,
+        "devEfficiency": 3,
+        "commercialization": 4,
+        "aiAdvantage": 3
+      },
+      "overallScore": 3.5
+    },
+    {
+      "id": "idea-005",
+      "title": "买家分群画像系统",
+      "summary": "基于购买行为和评价数据，构建买家分群画像，精准营销",
+      "date": "2026-03-22T11:00:00Z",
+      "track": "A",
+      "category": "数据分析",
+      "ratings": {
+        "painPoint": 4,
+        "devEfficiency": 4,
+        "commercialization": 4,
+        "aiAdvantage": 4
+      },
+      "overallScore": 4.0
+    },
+    {
+      "id": "idea-006",
+      "title": "视频评价自动生成",
+      "summary": "AI 生成买家评价视频模板，提升评价视频数量和质量",
+      "date": "2026-03-21T15:00:00Z",
+      "track": "B",
+      "category": "内容创作",
+      "ratings": {
+        "painPoint": 3,
+        "devEfficiency": 3,
+        "commercialization": 3,
+        "aiAdvantage": 4
+      },
+      "overallScore": 3.3
+    }
+  ]
+}

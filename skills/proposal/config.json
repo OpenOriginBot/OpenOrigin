@@ -1,0 +1,55 @@
+{
+  "id": "skill-proposal-001",
+  "name": "方案撰写",
+  "nameEn": "proposal-writer",
+  "version": "v1.0.0",
+  "status": "active",
+  "category": "content-production",
+  "owner": "[待定]",
+  "createdAt": "2026-03-27",
+  "updatedAt": "2026-03-27",
+
+  "permissions": {
+    "visibility": "public",
+    "allowedAgents": [],
+    "deniedAgents": [],
+    "rateLimit": {
+      "requestsPerHour": 30,
+      "requestsPerDay": 200
+    }
+  },
+
+  "runtime": {
+    "timeout": 60000,
+    "memory": "1024MB",
+    "entryPoint": "index.js"
+  },
+
+  "dependencies": {
+    "skills": [],
+    "packages": []
+  },
+
+  "config": {
+    "supportedTypes": [
+      "solution-proposal",
+      "quotation",
+      "project-proposal",
+      "partnership-proposal"
+    ],
+    "defaultCurrency": "CNY",
+    "maxPages": 10,
+    "templateStyle": "modern"
+  },
+
+  "metadata": {
+    "description": "根据客户需求生成解决方案文档和报价方案",
+    "useCases": [
+      "客户询盘回复",
+      "项目方案撰写",
+      "合作伙伴提案",
+      "招标应答"
+    ],
+    "keywords": ["方案", "提案", "报价", "解决方案", "proposal", "quotation"]
+  }
+}

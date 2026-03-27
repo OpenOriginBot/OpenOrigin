@@ -1,0 +1,36 @@
+{
+  "id": "research-competitor-001",
+  "type": "competitor",
+  "title": "竞品调研：灯带类目头部卖家",
+  "date": "2026-03-20",
+  "summary": "调研灯带类目 Top 10 卖家的运营策略和 AI 应用情况",
+  "competitors": [
+    {
+      "id": "comp-001",
+      "name": "某知名灯饰旗舰店",
+      "strengths": ["产品线丰富", "评价数量领先", "直播带货能力强"],
+      "aiAdoption": "已接入 AI 客服，日均接待 200+ 咨询",
+      "monthlySales": "500万+"
+    },
+    {
+      "id": "comp-002",
+      "name": "新兴智能灯带品牌",
+      "strengths": ["产品差异化明显", "私域运营出色", "用户粘性高"],
+      "aiAdoption": "使用 AI 生成产品描述和社交媒体内容",
+      "monthlySales": "200万+"
+    },
+    {
+      "id": "comp-003",
+      "name": "价格竞争型卖家",
+      "strengths": ["价格优势明显", "供应链成本低"],
+      "aiAdoption": "使用 RPA 自动化上下架和库存同步",
+      "monthlySales": "300万+"
+    }
+  ],
+  "conclusions": [
+    "AI 客服已成为头部卖家标配，大幅降低人工客服成本",
+    "内容自动化是中小卖家的突破口，可快速提升运营效率",
+    "数据驱动的选品和定价是核心竞争力"
+  ],
+  "source": "1688 平台数据 + 公开信息整理"
+}

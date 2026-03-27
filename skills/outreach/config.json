@@ -1,0 +1,54 @@
+{
+  "id": "skill-outreach-001",
+  "name": "外联拓展",
+  "nameEn": "customer-outreach",
+  "version": "v1.0.0",
+  "status": "active",
+  "category": "business-development",
+  "owner": "[待定]",
+  "createdAt": "2026-03-27",
+  "updatedAt": "2026-03-27",
+
+  "permissions": {
+    "visibility": "public",
+    "allowedAgents": [],
+    "deniedAgents": [],
+    "rateLimit": {
+      "requestsPerHour": 50,
+      "requestsPerDay": 500
+    }
+  },
+
+  "runtime": {
+    "timeout": 30000,
+    "memory": "512MB",
+    "entryPoint": "index.js"
+  },
+
+  "dependencies": {
+    "skills": [],
+    "packages": []
+  },
+
+  "config": {
+    "defaultTone": "professional",
+    "maxEmailLength": 2000,
+    "supportedLanguages": ["zh-CN", "en-US"],
+    "emailTemplates": {
+      "coldEmail": "cold-email-template",
+      "followUp": "follow-up-template",
+      "partnership": "partnership-template"
+    }
+  },
+
+  "metadata": {
+    "description": "自动生成客户外联邮件，支持个性化定制",
+    "useCases": [
+      "新客户开发",
+      "老客户激活",
+      "合作伙伴联系",
+      "活动邀请"
+    ],
+    "keywords": ["外联", "邮件", "客户开发", "CRM", "cold email"]
+  }
+}

@@ -1,0 +1,32 @@
+# OpenClaw Crontab Configuration
+# 定时任务配置文件
+# 
+# 格式: 分 时 日 月 周 命令
+#
+# 注意: 此文件只是配置参考，实际 cron 由系统管理
+# 安装: bash scripts/cron/install.sh
+
+# 任务 1：私有仓库备份
+# 描述: 暂存变更 → 有意义提交 → 推送到 GitHub → 失败上报
+# 运行: 每6小时一次
+0 */6 * * * bash /root/.openclaw/workspace/scripts/cron/backup/backup.sh >> /root/.openclaw/workspace/scripts/logs/backup-cron.log 2>&1
+
+# 任务 2：夜间自我优化 (self-audit)
+# 描述: 检查系统健康状态，更新 MEMORY.md，记录优化建议
+# 运行: 每天 02:00
+0 2 * * * bash /root/.openclaw/workspace/scripts/cron/self-optimize/self-audit.sh >> /root/.openclaw/workspace/scripts/logs/self-audit.log 2>&1
+
+# 任务 3：每日简报
+# 描述: 生成早晨摘要，包括优先级、夜间活动、待处理事项
+# 运行: 每天 07:30
+30 7 * * * bash /root/.openclaw/workspace/scripts/cron/briefing/daily-briefing.sh >> /root/.openclaw/workspace/scripts/logs/briefing.log 2>&1
+
+# 任务 4：滚动式系统文档
+# 描述: 更新 docs/ 目录下的系统文档
+# 运行: 每天 23:00
+0 23 * * * bash /root/.openclaw/workspace/scripts/cron/docs/update-docs.sh >> /root/.openclaw/workspace/scripts/logs/update-docs.log 2>&1
+
+# 任务 5：夜间构建 - 收集创意
+# 描述: 从 memory/ 中分析夜间活动，生成新的创意想法
+# 运行: 每天 06:00（在简报之前）
+0 6 * * * bash /root/.openclaw/workspace/scripts/cron/nightly-build/collect-ideas.sh >> /root/.openclaw/workspace/scripts/logs/collect-ideas.log 2>&1
