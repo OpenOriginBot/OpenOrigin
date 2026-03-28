@@ -8,35 +8,43 @@ SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 WORKSPACE=/root/.openclaw/workspace
 
-# GitHub 配置（从 .bashrc 读取）
+# GitHub 配置
 GIT_REPO_URL='git@github.com:OpenOriginBot/OpenOrigin.git'
 TELEGRAM_BOT_TOKEN='8272532401:AAENvD6mXrkM2fu8PRW2_CYGQ4py_1-j8y8'
 TELEGRAM_CHAT_ID='6810379425'
 
 # ============================================================
 # 任务 1：私有仓库备份
-# 频率：每 6 小时一次
-# 说明：暂存变更 → 提交 → 推送到 GitHub
+# 阅读并遵循：skills/backup/SKILL.md
 # ============================================================
 0 */6 * * * cd $WORKSPACE && bash $WORKSPACE/scripts/cron/backup/backup.sh >> $WORKSPACE/scripts/logs/backup-cron.log 2>&1
 
 # ============================================================
 # 任务 2：夜间自我优化
-# 频率：每天 02:00
-# 说明：审计文档、链接、过期文件、低效提示词
+# 阅读并遵循：skills/self-audit/SKILL.md
 # ============================================================
 0 2 * * * cd $WORKSPACE && bash $WORKSPACE/scripts/cron/self-optimize/self-audit.sh >> $WORKSPACE/scripts/logs/self-audit.log 2>&1
 
 # ============================================================
 # 任务 3：每日简报
-# 频率：每天 07:30
-# 说明：生成早晨摘要，更新 memory/ 和 briefings/
+# 阅读并遵循：skills/daily-briefing/SKILL.md
 # ============================================================
 30 7 * * * cd $WORKSPACE && bash $WORKSPACE/scripts/cron/briefing/daily-briefing.sh >> $WORKSPACE/scripts/logs/briefing.log 2>&1
 
 # ============================================================
 # 任务 4：滚动式系统文档
-# 频率：每天 23:00
-# 说明：分析变更，更新 docs/SYSTEM-REFERENCE.md
+# 阅读并遵循：skills/update-docs/SKILL.md
 # ============================================================
 0 23 * * * cd $WORKSPACE && bash $WORKSPACE/scripts/cron/docs/update-docs.sh >> $WORKSPACE/scripts/logs/docs-update.log 2>&1
+
+# ============================================================
+# 任务 5：高管晨会
+# 阅读并遵循：skills/morning-meeting/SKILL.md
+# ============================================================
+30 8 * * 1-5 cd $WORKSPACE && bash $WORKSPACE/scripts/cron/morning-meeting.sh >> $WORKSPACE/scripts/logs/morning-meeting.log 2>&1
+
+# ============================================================
+# 任务 6：夜间创意收集
+# 阅读并遵循：skills/collect-ideas/SKILL.md
+# ============================================================
+0 6 * * * cd $WORKSPACE && bash $WORKSPACE/scripts/cron/nightly-build/collect-ideas.sh >> $WORKSPACE/scripts/logs/collect-ideas.log 2>&1

@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
-  "lastUpdated": "2026-03-27",
-  "totalSkills": 3,
+  "version": "1.1.0",
+  "lastUpdated": "2026-03-28",
+  "totalSkills": 9,
   "skills": [
     {
       "id": "skill-outreach-001",
@@ -10,7 +10,7 @@
       "category": "business-development",
       "status": "active",
       "owner": "[待定]",
-      "description": "自动生成客户外联邮件和消息，支持个性化模板",
+      "description": "自动生成客户外联邮件，支持个性化模板",
       "version": "v1.0.0",
       "updatedAt": "2026-03-27",
       "tags": ["外联", "邮件", "客户开发", "CRM"],
@@ -40,45 +40,104 @@
       "version": "v1.0.0",
       "updatedAt": "2026-03-27",
       "tags": ["报表", "数据", "分析", "周报", "日报"],
-      "triggerKeywords": ["报表", "数据报告", "周报", "日报", "销售报告", "report"]
+      "triggerKeywords": ["报表", "数据报告", "周报", "日报", "销售报告", "report", "dashboard"]
+    },
+    {
+      "id": "skill-backup-001",
+      "name": "私有仓库备份",
+      "nameEn": "backup",
+      "category": "system-operation",
+      "status": "active",
+      "owner": "系统",
+      "description": "将工作区变更暂存、提交并推送到 GitHub 私有仓库",
+      "version": "v1.0.0",
+      "updatedAt": "2026-03-28",
+      "tags": ["备份", "Git", "自动化"],
+      "triggerKeywords": ["backup", "git push"],
+      "cronSchedule": "0 */6 * * *",
+      "isCronTask": true
+    },
+    {
+      "id": "skill-self-audit-001",
+      "name": "夜间自我优化",
+      "nameEn": "self-audit",
+      "category": "system-operation",
+      "status": "active",
+      "owner": "系统",
+      "description": "每日夜间审计文档一致性、待办清单、失效链接、过期文件",
+      "version": "v1.0.0",
+      "updatedAt": "2026-03-28",
+      "tags": ["审计", "优化", "文档"],
+      "triggerKeywords": ["audit", "self-optimize"],
+      "cronSchedule": "0 2 * * *",
+      "isCronTask": true
+    },
+    {
+      "id": "skill-daily-briefing-001",
+      "name": "每日简报",
+      "nameEn": "daily-briefing",
+      "category": "system-operation",
+      "status": "active",
+      "owner": "系统",
+      "description": "生成每日早晨摘要，汇总优先级、夜间活动、待处理事项",
+      "version": "v1.0.0",
+      "updatedAt": "2026-03-28",
+      "tags": ["简报", "日报", "摘要"],
+      "triggerKeywords": ["briefing", "morning report"],
+      "cronSchedule": "30 7 * * *",
+      "isCronTask": true
+    },
+    {
+      "id": "skill-update-docs-001",
+      "name": "滚动式系统文档",
+      "nameEn": "update-docs",
+      "category": "system-operation",
+      "status": "active",
+      "owner": "系统",
+      "description": "每日结束时更新 docs/SYSTEM-REFERENCE.md 系统参考文档",
+      "version": "v1.0.0",
+      "updatedAt": "2026-03-28",
+      "tags": ["文档", "系统参考", "SYSTEM-REFERENCE"],
+      "triggerKeywords": ["update-docs", "system reference"],
+      "cronSchedule": "0 23 * * *",
+      "isCronTask": true
+    },
+    {
+      "id": "skill-morning-meeting-001",
+      "name": "高管晨会",
+      "nameEn": "morning-meeting",
+      "category": "team-operation",
+      "status": "active",
+      "owner": "CEO",
+      "description": "并行拉起三名主管智能体，收集汇报并生成晨会纪要",
+      "version": "v1.0.0",
+      "updatedAt": "2026-03-28",
+      "tags": ["晨会", "汇报", "会议纪要"],
+      "triggerKeywords": ["morning meeting", "晨会"],
+      "cronSchedule": "30 8 * * 1-5",
+      "isCronTask": true
+    },
+    {
+      "id": "skill-collect-ideas-001",
+      "name": "夜间创意收集",
+      "nameEn": "collect-ideas",
+      "category": "team-operation",
+      "status": "active",
+      "owner": "系统",
+      "description": "从 memory 和任务看板发现创意想法，更新 ideas.json",
+      "version": "v1.0.0",
+      "updatedAt": "2026-03-28",
+      "tags": ["创意", "ideas", "实验室"],
+      "triggerKeywords": ["collect-ideas", "idea generation"],
+      "cronSchedule": "0 6 * * *",
+      "isCronTask": true
     }
   ],
   "categories": [
-    {
-      "id": "business-development",
-      "name": "业务拓展",
-      "description": "客户开发、外联拓展、商务合作",
-      "skillCount": 1
-    },
-    {
-      "id": "content-production",
-      "name": "内容生产",
-      "description": "文案撰写、方案生成、内容策划",
-      "skillCount": 1
-    },
-    {
-      "id": "data-analytics",
-      "name": "数据分析",
-      "description": "数据处理、报表生成、趋势分析",
-      "skillCount": 1
-    },
-    {
-      "id": "customer-service",
-      "name": "客户服务",
-      "description": "售后处理、客服应答、投诉管理",
-      "skillCount": 0
-    },
-    {
-      "id": "operations",
-      "name": "运营支持",
-      "description": "订单管理、库存监控、物流追踪",
-      "skillCount": 0
-    },
-    {
-      "id": "research",
-      "name": "调研研究",
-      "description": "市场调研、竞品分析、行业研究",
-      "skillCount": 0
-    }
+    {"id": "business-development", "name": "业务拓展", "skillCount": 1},
+    {"id": "content-production", "name": "内容生产", "skillCount": 1},
+    {"id": "data-analytics", "name": "数据分析", "skillCount": 1},
+    {"id": "system-operation", "name": "系统运维", "skillCount": 4},
+    {"id": "team-operation", "name": "团队运营", "skillCount": 2}
   ]
 }
