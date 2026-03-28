@@ -1,6 +1,6 @@
 # 🔧 SYSTEM-REFERENCE.md
 
-> _最后更新：2026-03-27 06:32:30_
+> _最后更新：2026-03-27 23:00:01_
 
 ---
 
@@ -26,7 +26,7 @@ OpenClaw Workspace
 ### 📦 模块清单
 
 **核心配置：**
-- AGENTS.md (135 行)
+- AGENTS.md (279 行)
 - HEARTBEAT.md (7 行)
 - IDENTITY.md (7 行)
 - MEMORY.md (145 行)
@@ -43,6 +43,9 @@ OpenClaw Workspace
 - briefing/
 - docs/
 - install.sh/
+- logs/
+- morning-meeting.sh/
+- nightly-build/
 - openzclaw-crontab/
 - rollback.sh/
 - self-optimize/
@@ -52,13 +55,21 @@ OpenClaw Workspace
 **OpenZeno 前端路由：**
 - path="/"
 - path="brain"
+- path="briefings"
+- path="cron"
 - path="lab"
+- path="lab/ideas"
+- path="lab/prototypes"
+- path="lab/research"
+- path="meetings"
+- path="memory"
+- path="skills"
 
 **Nginx 配置：**
     server_name oz.120619.xyz;
         proxy_pass http://127.0.0.1:8800;
-    listen [::]:443 ssl ipv6only=on; # managed by Certbot
-    listen 443 ssl; # managed by Certbot
+    listen [::]:443 ssl ipv6only=on;
+    listen 443 ssl;
     listen 80;
     listen [::]:80;
     server_name oz.120619.xyz;
@@ -71,23 +82,28 @@ OpenClaw Workspace
 
 | 进程 | PID | 端口 | 状态 |
 |------|-----|------|------|
-| OpenZeno (Dev) | 274127 | 8800 | ✅ 运行中 |
+| OpenZeno (Dev) | 535221 | 8800 | ✅ 运行中 |
 | Nginx | 272055 | 80/443 | ✅ 运行中 |
 
 ### 🆕 近期文件（7天内）
 
 | 文件 | 修改时间 |
 |------|----------|
+| skills/index.json | 2026-03-27 |
+| skills/SKILL-TEMPLATE.md | 2026-03-27 |
+| skills/README.md | 2026-03-27 |
+| skills/MANAGEMENT.md | 2026-03-27 |
+| scripts/openzclaw-crontab | 2026-03-27 |
 | memory/2026-03-27.md | 2026-03-27 |
 | docs/SYSTEM-REFERENCE.md | 2026-03-27 |
+| docs/AI-ORG-CHART.md | 2026-03-27 |
+| briefings/2026-03-27.md | 2026-03-27 |
 | USER.md | 2026-03-27 |
 | TOOLS.md | 2026-03-27 |
 | SOUL.md | 2026-03-27 |
 | MEMORY.md | 2026-03-27 |
 | IDENTITY.md | 2026-03-27 |
 | HEARTBEAT.md | 2026-03-27 |
-| AGENTS.md | 2026-03-27 |
-| .openclaw/workspace-state.json | 2026-03-27 |
 
 ### 📂 Git 变更（自 2026-03-27）
 
@@ -95,22 +111,3 @@ _无变更_
 
 ### 📝 今日动态
 
-## 今日任务
-
-- [待填充]
-
-## 异常事件
-
-- [待填充]
-
-## 明日待办
-
-- [待填充]
-
-### ⚠️ 已知问题
-
-- [2026-03-27.md] ## 异常事件
-_无已知问题_
-
----
-_由 OpenClaw 自动化维护_
