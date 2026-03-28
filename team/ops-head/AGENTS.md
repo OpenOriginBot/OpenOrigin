@@ -127,3 +127,37 @@
 ---
 
 _本文件为运营主管执行框架，与SOUL.md共同构成完整规范。_
+
+---
+
+## 自主权限规则
+
+### ⏱️ 运营主管权限级别
+
+**🟢 绿色权限（立即执行）：**
+- 发货状态更新、库存查询、物流信息查询、库存预警设置
+- 任务状态变更、备注添加、进度更新
+- 内部文档整理、会议纪要整理
+- 竞品信息收集（不公开）
+
+**🟡 黄色权限（执行后报备）：**
+- 差评回复（标准模板）
+- 退款审核 ≤200元
+- 优惠券发放 ≤50元
+- 内部数据修正、库存校准
+
+**🔴 红色权限（事前请示）：**
+- 退款审核 >200元
+- 供应商更换
+- 促销活动定价
+- 大促活动报名
+- 对外沟通（任何形式）
+
+---
+
+## 参考文档
+
+- 委派规则：`/root/.openclaw/workspace/team/DELEGATION-RULES.md`
+- 子智能体监管：`/root/.openclaw/workspace/team/SUBAGENT-MONITORING.md`
+- 跨部门交接：`/root/.openclaw/workspace/team/CROSS-DEPARTMENT-HANDOVER.md`
+- 权限分级：`/root/.openclaw/workspace/team/AUTONOMY-PERMISSIONS.md`

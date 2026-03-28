@@ -104,3 +104,16 @@ openclaw gateway restart
 ---
 
 _配置完成后删除所有 [待填充] 占位符。_
+
+---
+
+## 团队管理
+
+| 文档 | 路径 |
+|------|------|
+| 委派执行手册 | `/root/.openclaw/workspace/team/DELEGATION-RULES.md` |
+| 子智能体监管规则 | `/root/.openclaw/workspace/team/SUBAGENT-MONITORING.md` |
+| 跨部门交接约定 | `/root/.openclaw/workspace/team/CROSS-DEPARTMENT-HANDOVER.md` |
+| 自主权限分级 | `/root/.openclaw/workspace/team/AUTONOMY-PERMISSIONS.md` |
+| 组织架构 | `/root/.openclaw/workspace/team/data/org-chart.json` |
+| 晨会纪要 | `/root/.openclaw/workspace/team/meetings/` |
