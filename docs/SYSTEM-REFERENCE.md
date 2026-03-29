@@ -1,6 +1,6 @@
 # 🔧 SYSTEM-REFERENCE.md
 
-> _最后更新：2026-03-27 23:00:01_
+> _最后更新：2026-03-28 23:00:01_
 
 ---
 
@@ -31,7 +31,7 @@ OpenClaw Workspace
 - IDENTITY.md (7 行)
 - MEMORY.md (145 行)
 - SOUL.md (60 行)
-- TOOLS.md (106 行)
+- TOOLS.md (119 行)
 - USER.md (68 行)
 
 **项目：**
@@ -89,25 +89,55 @@ OpenClaw Workspace
 
 | 文件 | 修改时间 |
 |------|----------|
-| skills/index.json | 2026-03-27 |
+| team/SUBAGENT-MONITORING.md | 2026-03-28 |
+| team/DELEGATION-RULES.md | 2026-03-28 |
+| team/CROSS-DEPARTMENT-HANDOVER.md | 2026-03-28 |
+| team/AUTONOMY-PERMISSIONS.md | 2026-03-28 |
+| skills/index.json | 2026-03-28 |
+| memory/2026-03-28.md | 2026-03-28 |
+| docs/SYSTEM-REFERENCE.md | 2026-03-28 |
+| briefings/2026-03-28.md | 2026-03-28 |
+| TOOLS.md | 2026-03-28 |
 | skills/SKILL-TEMPLATE.md | 2026-03-27 |
 | skills/README.md | 2026-03-27 |
 | skills/MANAGEMENT.md | 2026-03-27 |
 | scripts/openzclaw-crontab | 2026-03-27 |
 | memory/2026-03-27.md | 2026-03-27 |
-| docs/SYSTEM-REFERENCE.md | 2026-03-27 |
 | docs/AI-ORG-CHART.md | 2026-03-27 |
-| briefings/2026-03-27.md | 2026-03-27 |
-| USER.md | 2026-03-27 |
-| TOOLS.md | 2026-03-27 |
-| SOUL.md | 2026-03-27 |
-| MEMORY.md | 2026-03-27 |
-| IDENTITY.md | 2026-03-27 |
-| HEARTBEAT.md | 2026-03-27 |
 
 ### 📂 Git 变更（自 2026-03-27）
 
-_无变更_
+ba6d51e 📝 [2026-03-28 18:00] 未跟踪 6 个文件
+M	memory/2026-03-28.md
+M	scripts/cron/logs/backup-20260328.log
+M	scripts/cron/openzclaw-crontab
+A	skills/backup/SKILL.md
+A	skills/collect-ideas/SKILL.md
+A	skills/daily-briefing/SKILL.md
+M	skills/index.json
+A	skills/morning-meeting/SKILL.md
+A	skills/self-audit/SKILL.md
+A	skills/update-docs/SKILL.md
+6cb2f03 📝 [2026-03-28 12:00] 未跟踪 7 个文件
+M	TOOLS.md
+A	briefings/2026-03-28.md
+A	memory/2026-03-28.md
+M	scripts/cron/logs/backup-20260328.log
+A	team/AUTONOMY-PERMISSIONS.md
+A	team/CEO/TOOLS.md
+A	team/CROSS-DEPARTMENT-HANDOVER.md
+A	team/DELEGATION-RULES.md
+A	team/SUBAGENT-MONITORING.md
+M	team/mkt-head/AGENTS.md
+M	team/ops-head/AGENTS.md
+M	team/rev-head/AGENTS.md
+30c46e1 📝 [2026-03-28 06:00] 工作区更新
+M	scripts/cron/logs/backup-20260328.log
+589d2a9 📝 [2026-03-28 00:00] 未跟踪 1 个文件
+M	docs/SYSTEM-REFERENCE.md
+M	memory/2026-03-27.md
+M	scripts/cron/logs/backup-20260327.log
+A	scripts/cron/logs/backup-20260328.log
 
 ### 📝 今日动态
 
