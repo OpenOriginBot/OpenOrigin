@@ -1,6 +1,81 @@
 {
   "ideas": [
     {
+      "id": "idea-20260329060002-51",
+      "title": "从",
+      "summary": "从夜间自动化分析生成的创意：从",
+      "date": "2026-03-29T06:00:02Z",
+      "track": "B",
+      "category": "运营工具",
+      "ratings": {
+        "painPoint": 3,
+        "devEfficiency": 3,
+        "commercialization": 3,
+        "aiAdvantage": 3
+      },
+      "overallScore": 3.5
+    },
+    {
+      "id": "idea-20260329060002-80",
+      "title": "skills/collect-ideas/SKILL.md",
+      "summary": "从夜间自动化分析生成的创意：skills/collect-ideas/SKILL.md",
+      "date": "2026-03-29T06:00:02Z",
+      "track": "B",
+      "category": "运营工具",
+      "ratings": {
+        "painPoint": 3,
+        "devEfficiency": 3,
+        "commercialization": 3,
+        "aiAdvantage": 3
+      },
+      "overallScore": 3.5
+    },
+    {
+      "id": "idea-20260329060001-311",
+      "title": "2026-03-28.md",
+      "summary": "从夜间自动化分析生成的创意：2026-03-28.md",
+      "date": "2026-03-29T06:00:01Z",
+      "track": "B",
+      "category": "运营工具",
+      "ratings": {
+        "painPoint": 3,
+        "devEfficiency": 3,
+        "commercialization": 3,
+        "aiAdvantage": 3
+      },
+      "overallScore": 3.5
+    },
+    {
+      "id": "idea-20260329060001-382",
+      "title": "2026-03-27.md",
+      "summary": "从夜间自动化分析生成的创意：2026-03-27.md",
+      "date": "2026-03-29T06:00:01Z",
+      "track": "B",
+      "category": "运营工具",
+      "ratings": {
+        "painPoint": 3,
+        "devEfficiency": 3,
+        "commercialization": 3,
+        "aiAdvantage": 3
+      },
+      "overallScore": 3.5
+    },
+    {
+      "id": "idea-20260329060001-822",
+      "title": "-",
+      "summary": "从夜间自动化分析生成的创意：-",
+      "date": "2026-03-29T06:00:01Z",
+      "track": "B",
+      "category": "运营工具",
+      "ratings": {
+        "painPoint": 3,
+        "devEfficiency": 3,
+        "commercialization": 3,
+        "aiAdvantage": 3
+      },
+      "overallScore": 3.5
+    },
+    {
       "id": "idea-001",
       "title": "智能选品推荐引擎",
       "summary": "基于销售数据和用户行为，自动推荐高潜力商品，辅助选品决策",
@@ -73,7 +148,7 @@
         "commercialization": 4,
         "aiAdvantage": 4
       },
-      "overallScore": 4.0
+      "overallScore": 4
     },
     {
       "id": "idea-006",
