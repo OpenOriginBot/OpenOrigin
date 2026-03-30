@@ -1,6 +1,6 @@
 # 🔧 SYSTEM-REFERENCE.md
 
-> _最后更新：2026-03-28 23:00:01_
+> _最后更新：2026-03-29 23:00:01_
 
 ---
 
@@ -89,24 +89,39 @@ OpenClaw Workspace
 
 | 文件 | 修改时间 |
 |------|----------|
+| memory/2026-03-29.md | 2026-03-29 |
+| docs/SYSTEM-REFERENCE.md | 2026-03-29 |
+| briefings/2026-03-29.md | 2026-03-29 |
 | team/SUBAGENT-MONITORING.md | 2026-03-28 |
 | team/DELEGATION-RULES.md | 2026-03-28 |
 | team/CROSS-DEPARTMENT-HANDOVER.md | 2026-03-28 |
 | team/AUTONOMY-PERMISSIONS.md | 2026-03-28 |
 | skills/index.json | 2026-03-28 |
 | memory/2026-03-28.md | 2026-03-28 |
-| docs/SYSTEM-REFERENCE.md | 2026-03-28 |
 | briefings/2026-03-28.md | 2026-03-28 |
 | TOOLS.md | 2026-03-28 |
 | skills/SKILL-TEMPLATE.md | 2026-03-27 |
 | skills/README.md | 2026-03-27 |
 | skills/MANAGEMENT.md | 2026-03-27 |
 | scripts/openzclaw-crontab | 2026-03-27 |
-| memory/2026-03-27.md | 2026-03-27 |
-| docs/AI-ORG-CHART.md | 2026-03-27 |
 
 ### 📂 Git 变更（自 2026-03-27）
 
+cc5d174 📝 [2026-03-29 18:00] 工作区更新
+M	scripts/cron/logs/backup-20260329.log
+71de5fc 📝 [2026-03-29 12:00] 未跟踪 2 个文件
+A	briefings/2026-03-29.md
+A	memory/2026-03-29.md
+M	projects/openzeno/src/data/ideas.json
+M	scripts/cron/logs/backup-20260329.log
+M	scripts/cron/logs/collect-ideas-20260329.log
+6f697fc 📝 [2026-03-29 06:00] 未跟踪 1 个文件
+M	scripts/cron/logs/backup-20260329.log
+A	scripts/cron/logs/collect-ideas-20260329.log
+319ac2b 📝 [2026-03-29 00:00] 未跟踪 1 个文件
+M	docs/SYSTEM-REFERENCE.md
+M	scripts/cron/logs/backup-20260328.log
+A	scripts/cron/logs/backup-20260329.log
 ba6d51e 📝 [2026-03-28 18:00] 未跟踪 6 个文件
 M	memory/2026-03-28.md
 M	scripts/cron/logs/backup-20260328.log
