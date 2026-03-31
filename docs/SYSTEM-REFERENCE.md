@@ -1,6 +1,6 @@
 # 🔧 SYSTEM-REFERENCE.md
 
-> _最后更新：2026-03-29 23:00:01_
+> _最后更新：2026-03-30 23:00:02_
 
 ---
 
@@ -89,8 +89,10 @@ OpenClaw Workspace
 
 | 文件 | 修改时间 |
 |------|----------|
+| memory/2026-03-30.md | 2026-03-30 |
+| docs/SYSTEM-REFERENCE.md | 2026-03-30 |
+| briefings/2026-03-30.md | 2026-03-30 |
 | memory/2026-03-29.md | 2026-03-29 |
-| docs/SYSTEM-REFERENCE.md | 2026-03-29 |
 | briefings/2026-03-29.md | 2026-03-29 |
 | team/SUBAGENT-MONITORING.md | 2026-03-28 |
 | team/DELEGATION-RULES.md | 2026-03-28 |
@@ -102,11 +104,23 @@ OpenClaw Workspace
 | TOOLS.md | 2026-03-28 |
 | skills/SKILL-TEMPLATE.md | 2026-03-27 |
 | skills/README.md | 2026-03-27 |
-| skills/MANAGEMENT.md | 2026-03-27 |
-| scripts/openzclaw-crontab | 2026-03-27 |
 
 ### 📂 Git 变更（自 2026-03-27）
 
+d51d7a0 📝 [2026-03-30 18:00] 工作区更新
+M	scripts/cron/logs/backup-20260330.log
+f8a5d46 📝 [2026-03-30 12:00] 未跟踪 3 个文件
+A	briefings/2026-03-30.md
+A	memory/2026-03-30.md
+M	scripts/cron/logs/backup-20260330.log
+A	"team/meetings/2026-03-30-\346\257\217\346\227\245\345\220\214\346\255\245\344\274\232\350\256\256.md"
+9bf63a4 📝 [2026-03-30 06:00] 未跟踪 1 个文件
+M	scripts/cron/logs/backup-20260330.log
+A	scripts/cron/logs/collect-ideas-20260330.log
+8a96ece 📝 [2026-03-30 00:00] 未跟踪 1 个文件
+M	docs/SYSTEM-REFERENCE.md
+M	scripts/cron/logs/backup-20260329.log
+A	scripts/cron/logs/backup-20260330.log
 cc5d174 📝 [2026-03-29 18:00] 工作区更新
 M	scripts/cron/logs/backup-20260329.log
 71de5fc 📝 [2026-03-29 12:00] 未跟踪 2 个文件
@@ -143,16 +157,6 @@ A	team/CEO/TOOLS.md
 A	team/CROSS-DEPARTMENT-HANDOVER.md
 A	team/DELEGATION-RULES.md
 A	team/SUBAGENT-MONITORING.md
-M	team/mkt-head/AGENTS.md
-M	team/ops-head/AGENTS.md
-M	team/rev-head/AGENTS.md
-30c46e1 📝 [2026-03-28 06:00] 工作区更新
-M	scripts/cron/logs/backup-20260328.log
-589d2a9 📝 [2026-03-28 00:00] 未跟踪 1 个文件
-M	docs/SYSTEM-REFERENCE.md
-M	memory/2026-03-27.md
-M	scripts/cron/logs/backup-20260327.log
-A	scripts/cron/logs/backup-20260328.log
 
 ### 📝 今日动态
 
