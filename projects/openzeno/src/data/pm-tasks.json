@@ -5,16 +5,21 @@
     "description": "将48小时发货率提升至95%",
     "assigneeAgentId": "agent-ops-head",
     "assigneeName": "⏱️ 运营主管",
-    "status": "in_progress",
+    "status": "completed",
     "priority": "high",
     "createdAt": "2026-03-27T14:00:00Z",
-    "updatedAt": "2026-03-27T14:31:55.645Z",
+    "updatedAt": "2026-04-01T08:30:00Z",
     "dueDate": "2026-04-01",
-    "deliverables": "",
+    "deliverables": "发货时效看板优化方案完成，48h发货率目标95%",
     "notes": [
       {
         "content": "开始处理发货时效优化",
         "timestamp": "2026-03-27T14:31:55.645Z",
+        "operator": "ops-head"
+      },
+      {
+        "content": "优化方案已完成，今日交付",
+        "timestamp": "2026-04-01T08:30:00Z",
         "operator": "ops-head"
       }
     ],
@@ -24,6 +29,13 @@
         "from": "todo",
         "to": "in_progress",
         "timestamp": "2026-03-27T14:31:55.645Z",
+        "operator": "ops-head"
+      },
+      {
+        "field": "status",
+        "from": "in_progress",
+        "to": "completed",
+        "timestamp": "2026-04-01T08:30:00Z",
         "operator": "ops-head"
       }
     ]
