@@ -1,6 +1,6 @@
 # 🔧 SYSTEM-REFERENCE.md
 
-> _最后更新：2026-03-30 23:00:02_
+> _最后更新：2026-03-31 23:00:01_
 
 ---
 
@@ -89,8 +89,10 @@ OpenClaw Workspace
 
 | 文件 | 修改时间 |
 |------|----------|
+| memory/2026-03-31.md | 2026-03-31 |
+| docs/SYSTEM-REFERENCE.md | 2026-03-31 |
+| briefings/2026-03-31.md | 2026-03-31 |
 | memory/2026-03-30.md | 2026-03-30 |
-| docs/SYSTEM-REFERENCE.md | 2026-03-30 |
 | briefings/2026-03-30.md | 2026-03-30 |
 | memory/2026-03-29.md | 2026-03-29 |
 | briefings/2026-03-29.md | 2026-03-29 |
@@ -102,11 +104,23 @@ OpenClaw Workspace
 | memory/2026-03-28.md | 2026-03-28 |
 | briefings/2026-03-28.md | 2026-03-28 |
 | TOOLS.md | 2026-03-28 |
-| skills/SKILL-TEMPLATE.md | 2026-03-27 |
-| skills/README.md | 2026-03-27 |
 
 ### 📂 Git 变更（自 2026-03-27）
 
+62f1eaf 📝 [2026-03-31 18:00] 工作区更新
+M	scripts/cron/logs/backup-20260331.log
+d8ee191 📝 [2026-03-31 12:00] 未跟踪 3 个文件
+A	briefings/2026-03-31.md
+A	memory/2026-03-31.md
+M	scripts/cron/logs/backup-20260331.log
+A	"team/meetings/2026-03-31-\346\257\217\346\227\245\345\220\214\346\255\245\344\274\232\350\256\256.md"
+5cc0f08 📝 [2026-03-31 06:00] 未跟踪 1 个文件
+M	scripts/cron/logs/backup-20260331.log
+A	scripts/cron/logs/collect-ideas-20260331.log
+c8cda34 📝 [2026-03-31 00:00] 未跟踪 1 个文件
+M	docs/SYSTEM-REFERENCE.md
+M	scripts/cron/logs/backup-20260330.log
+A	scripts/cron/logs/backup-20260331.log
 d51d7a0 📝 [2026-03-30 18:00] 工作区更新
 M	scripts/cron/logs/backup-20260330.log
 f8a5d46 📝 [2026-03-30 12:00] 未跟踪 3 个文件
@@ -143,20 +157,6 @@ M	scripts/cron/openzclaw-crontab
 A	skills/backup/SKILL.md
 A	skills/collect-ideas/SKILL.md
 A	skills/daily-briefing/SKILL.md
-M	skills/index.json
-A	skills/morning-meeting/SKILL.md
-A	skills/self-audit/SKILL.md
-A	skills/update-docs/SKILL.md
-6cb2f03 📝 [2026-03-28 12:00] 未跟踪 7 个文件
-M	TOOLS.md
-A	briefings/2026-03-28.md
-A	memory/2026-03-28.md
-M	scripts/cron/logs/backup-20260328.log
-A	team/AUTONOMY-PERMISSIONS.md
-A	team/CEO/TOOLS.md
-A	team/CROSS-DEPARTMENT-HANDOVER.md
-A	team/DELEGATION-RULES.md
-A	team/SUBAGENT-MONITORING.md
 
 ### 📝 今日动态
 
