@@ -1,6 +1,6 @@
 # 🔧 SYSTEM-REFERENCE.md
 
-> _最后更新：2026-03-31 23:00:01_
+> _最后更新：2026-04-01 23:00:01_
 
 ---
 
@@ -89,8 +89,10 @@ OpenClaw Workspace
 
 | 文件 | 修改时间 |
 |------|----------|
+| memory/2026-04-01.md | 2026-04-01 |
+| docs/SYSTEM-REFERENCE.md | 2026-04-01 |
+| briefings/2026-04-01.md | 2026-04-01 |
 | memory/2026-03-31.md | 2026-03-31 |
-| docs/SYSTEM-REFERENCE.md | 2026-03-31 |
 | briefings/2026-03-31.md | 2026-03-31 |
 | memory/2026-03-30.md | 2026-03-30 |
 | briefings/2026-03-30.md | 2026-03-30 |
@@ -102,11 +104,24 @@ OpenClaw Workspace
 | team/AUTONOMY-PERMISSIONS.md | 2026-03-28 |
 | skills/index.json | 2026-03-28 |
 | memory/2026-03-28.md | 2026-03-28 |
-| briefings/2026-03-28.md | 2026-03-28 |
-| TOOLS.md | 2026-03-28 |
 
 ### 📂 Git 变更（自 2026-03-27）
 
+30ca23d 📝 [2026-04-01 18:00] 工作区更新
+M	scripts/cron/logs/backup-20260401.log
+45ff2d0 📝 [2026-04-01 12:00] 未跟踪 3 个文件
+A	briefings/2026-04-01.md
+A	memory/2026-04-01.md
+M	projects/openzeno/src/data/pm-tasks.json
+M	scripts/cron/logs/backup-20260401.log
+A	"team/meetings/2026-04-01-\346\257\217\346\227\245\345\220\214\346\255\245\344\274\232\350\256\256.md"
+2364aaf 📝 [2026-04-01 06:00] 未跟踪 1 个文件
+M	scripts/cron/logs/backup-20260401.log
+A	scripts/cron/logs/collect-ideas-20260401.log
+8640c56 📝 [2026-04-01 00:00] 未跟踪 1 个文件
+M	docs/SYSTEM-REFERENCE.md
+M	scripts/cron/logs/backup-20260331.log
+A	scripts/cron/logs/backup-20260401.log
 62f1eaf 📝 [2026-03-31 18:00] 工作区更新
 M	scripts/cron/logs/backup-20260331.log
 d8ee191 📝 [2026-03-31 12:00] 未跟踪 3 个文件
@@ -142,21 +157,6 @@ A	briefings/2026-03-29.md
 A	memory/2026-03-29.md
 M	projects/openzeno/src/data/ideas.json
 M	scripts/cron/logs/backup-20260329.log
-M	scripts/cron/logs/collect-ideas-20260329.log
-6f697fc 📝 [2026-03-29 06:00] 未跟踪 1 个文件
-M	scripts/cron/logs/backup-20260329.log
-A	scripts/cron/logs/collect-ideas-20260329.log
-319ac2b 📝 [2026-03-29 00:00] 未跟踪 1 个文件
-M	docs/SYSTEM-REFERENCE.md
-M	scripts/cron/logs/backup-20260328.log
-A	scripts/cron/logs/backup-20260329.log
-ba6d51e 📝 [2026-03-28 18:00] 未跟踪 6 个文件
-M	memory/2026-03-28.md
-M	scripts/cron/logs/backup-20260328.log
-M	scripts/cron/openzclaw-crontab
-A	skills/backup/SKILL.md
-A	skills/collect-ideas/SKILL.md
-A	skills/daily-briefing/SKILL.md
 
 ### 📝 今日动态
 
