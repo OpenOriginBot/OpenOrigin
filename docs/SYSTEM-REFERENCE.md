@@ -1,130 +1,171 @@
 # 系统参考文档
 
-> ⚠️ **此文档由 cron 任务自动维护，请勿手动编辑（覆盖层面除外）**
-> 每次 cron 执行后自动滚动更新最后变更记录。
+> 自动生成的系统文档。每晚23:00自动更新。  
+> 上次更新: 2026-04-03 23:00:05
 
 ---
 
-## 📝 今日变更（2026-03-26）
+## 📝 今日变更 (2026-04-03)
 
-- 初始化 SOUL.md、USER.md、AGENTS.md、TOOLS.md、MEMORY.md（电商业务配置）
-- 创建 projects/OpenOrigin（React 仪表盘：Ops/Brain/Lab 三模块）
-- 配置 4 个 cron 自动化任务
+**今日提交 (4 个):**
+  f1e6b5a feat: 4个自动化任务 + 完整文档
+  ecf6542 📦 2026-04-03 21:36 自动备份 | +       8新增
+  5b790ac feat: complete OpenOrigin UI rebuild — 6-tab command center
+  1507420 chore: 日常备份 — 更新日记录入、OpenOrigin小幅调整、新增自动化脚本
 
----
+**今日变更文件:**
+  - docs/SYSTEM-REFERENCE.md — 滚动文档自动更新（23:00 cron）
+  - projects/OpenOrigin/.gitignore — 新增 .vercel 忽略规则
+  - projects/OpenOrigin/vercel.json — 新增 Vercel 配置文件
+  - memory/2026-04-03.md — 今日工作记忆
+  - memory/briefing-2026-04-03.md — 今日简报
+  - automations/logs/docs-cron.log — 文档更新 cron 日志
+  - automations/logs/docs-update-20260403.log — 文档更新执行日志
 
-## 🏗️ 当前架构概览
+## 🏗 架构概览
 
-```
-工作区根目录：~/.openclaw/workspace/
-│
-├── SOUL.md           # AI 身份与价值观
-├── USER.md           # 用户档案与偏好
-├── AGENTS.md         # 运营规范与权限
-├── TOOLS.md          # 工具与环境说明
-├── MEMORY.md         # 长期记忆（供应商、账号、经验）
-├── HEARTBEAT.md      # 心跳任务清单
-├── STARTUP_CHECKLIST.md  # 启动检查清单
-├── BOOTSTRAP.md      # 首次运行引导（待删除）
-│
-├── memory/           # 每日记忆流水账
-│   └── YYYY-MM-DD.md
-│
-├── docs/             # 系统文档（自动维护）
-│   └── SYSTEM-REFERENCE.md
-│
-├── projects/         # 业务项目
-│   └── OpenOrigin/   # React 仪表盘应用
-│       ├── src/
-│       │   ├── modules/
-│       │   │   ├── Ops/          # 任务管理器
-│       │   │   ├── Brain/        # Markdown 每日简报
-│       │   │   └── Lab/          # 实验仪表盘
-│       │   ├── components/       # 通用 UI 组件
-│       │   ├── utils/            # 工具函数
-│       │   └── data/             # 种子数据
-│       └── vite.config.js
-│
-└── .git/             # Git 版本控制
-```
+**项目:** OpenOrigin - AI Agent Command Center  
+**技术栈:** React + Vite + Tailwind CSS + Framer Motion + Lucide Icons + Recharts  
+**工作空间:** /Users/liam/.openclaw/workspace
+
+### 目录结构
+
+[23:00:05] [0;34m[分析] 项目结构...[0m
+
+
+**目录结构:**
+  - automations/ (0 文件)
+  - docs/ (2 文件)
+  - memory/ (5 文件)
+  - projects/ (12118 文件)
+  - scripts/ (0 文件)
 
 ---
 
 ## 📦 模块清单
 
-| 模块 | 路径 | 用途 | 状态 |
-|------|------|------|------|
-| OpenClaw 工作区核心 | ~/.openclaw/workspace/ | 记忆、规范、工具配置 | 活跃 |
-| OpenOrigin 仪表盘 | projects/OpenOrigin/ | 任务/简报/实验三模块 UI | 活跃 |
-| Ops 任务管理 | projects/OpenOrigin/src/modules/Ops/ | 客户交付任务管理 | 活跃 |
-| Brain 每日简报 | projects/OpenOrigin/src/modules/Brain/ | Markdown 简报加载与展示 | 活跃 |
-| Lab 实验仪表盘 | projects/OpenOrigin/src/modules/Lab/ | 实验与原型跟踪 | 活跃 |
+| 模块 | 路径 | 说明 |
+|------|------|------|
+| Dashboard | src/modules/Dashboard/ | 指挥甲板 - 系统概览 |
+| Agents | src/modules/Agents/ | 特工档案 - Agent管理 |
+| TaskBoard | src/modules/TaskBoard/ | 任务看板 - 看板式任务管理 |
+| Logs | src/modules/Logs/ | AI日志 - 实时日志查看 |
+| Parliament | src/modules/Parliament/ | 多Agent讨论界面 |
+| Meetings | src/modules/Meetings/ | 会议情报 - 会议记录与分析 |
+| Ops | src/modules/Ops/ | 任务管理 - 任务创建/筛选 |
+| Brain | src/modules/Brain/ | 每日简报生成 |
+| Lab | src/modules/Lab/ | 实验仪表盘 |
 
 ---
 
-## ⏰ 活跃 Cron 任务
+## ⏰ 活跃定时任务
 
-| ID | 任务名 | 执行时间 | 用途 | 状态 |
-|----|--------|----------|------|------|
-| `7bb01441` | 私有仓库备份 | 每天 02:00 | Git add → 语义提交 → 推送到 GitHub | 启用 |
-| `45712e92` | 夜间自我改进 | 每天 03:00 | 按周轮换审计文档/待办/链接/文件/提示词 | 启用 |
-| `12a6013d` | 每日简报 | 每天 07:00 | 生成当日简报，保存到 memory/YYYY-MM-DD.md | 启用 |
-| `31572e18` | 滚动式OS文档 | 每天 23:00 | 更新 docs/SYSTEM-REFERENCE.md | 启用 |
+[23:00:04] [0;34m[分析] 定时任务...[0m
+
+
+**HEARTBEAT 任务:**
+  # HEARTBEAT.md
+  
+  ## 活跃定时任务
+  
+  | 任务 | 脚本 | 定时规则 | 说明 |
+  |------|------|----------|------|
+  | 每日简报 | automations/scripts/daily-briefing.sh | 30 8 * * * | 生成每日摘要 |
+  | 夜间优化 | automations/scripts/self-optimize.sh | 0 2 * * * | 审计+低风险修复 |
+  | 文档更新 | automations/scripts/update-docs.sh | 0 23 * * * | 滚动更新系统文档 |
+  | 仓库备份 | automations/scripts/backup-repo.sh | 0 */6 * * * | 每6小时备份 |
+  
+  ## 最近执行状态
+  
+  - **2026-04-03 21:36** backup-repo.sh ✅ 成功
+  - **2026-04-03 21:38** self-optimize.sh ✅ 得分 92/100
+  - **2026-04-03 21:39** daily-briefing.sh ✅ 成功
+  - **2026-04-03 21:40** update-docs.sh ✅ 成功
+  
+  ## 文档
+  
+  配置说明：`docs/AUTOMATIONS.md`
+  - backup-repo: 
+  - daily-briefing: 
+  - self-optimize: 
+  - update-docs: 
 
 ---
 
-## ⚠️ 已知问题 / 待解决
+## 🔧 自动化脚本
 
-- 1688 API 尚未集成（采购流程仍需手动）
-- 多平台订单汇总方案未落地
-- GitHub 推送需要确认远程仓库已配置（`git remote -v` 检查）
+| 脚本 | 功能 |
+|------|------|
+| backup-repo.sh | 私有仓库备份 |
+| self-optimize.sh | 夜间自我优化 |
+| daily-briefing.sh | 每日简报生成 |
+| update-docs.sh | 滚动式文档更新 |
 
 ---
 
-## 📁 关键文件索引
+## 🐛 已知问题
 
-| 文件 | 用途 | 维护者 |
-|------|------|--------|
-| `~/.openclaw/workspace/MEMORY.md` | 长期记忆：供应商白名单、采购成本基准 | 自动 + 手动 |
-| `~/.openclaw/workspace/USER.md` | 用户档案（账号、偏好、痛点） | 手动 |
-| `~/.openclaw/workspace/SOUL.md` | AI 身份与不可妥协原则 | 手动 |
-| `projects/OpenOrigin/src/data/*.json` | 各模块种子/演示数据 | 手动 |
-| `docs/SYSTEM-REFERENCE.md` | 本文档，系统架构快照 | 自动（cron） |
+[23:00:05] [0;34m[分析] 已知问题...[0m
+
+
+---
+2026-03-28.md:
+  - [ ] 检查并修复 3 个错误状态的 Cron 任务（滚动式OS文档、私有仓库备份、夜间自我改进）
+  - 建议尽快查看这些任务的最近执行日志，定位失败原因
+
+---
+2026-03-31.md:
+  - 无（本次未发现任何问题）
+
+---
+briefing-2026-04-03.md:
+    - [ ] 检查并修复 3 个错误状态的 Cron 任务（滚动式OS文档、私有仓库备份、夜间自我改进）
+
+---
+
+## 📊 系统状态
+
+- 今日提交: 4
+- 备份状态: success
+- 最后备份: 2026-04-03 21:36:45
 
 ---
 
 ## 🔄 回滚指南
 
-### 撤销最后提交
+如需撤销自动化产生的错误修改：
+
+### 1. Git 回滚
 ```bash
-cd ~/.openclaw/workspace
-git log --oneline -3                    # 查看最近3次提交
-git reset --soft HEAD~1                 # 撤销最后一次提交（保留变更）
-git reset --hard HEAD~1                 # 撤销提交且不保留变更（危险！）
+# 查看变更
+git log --oneline -10
+
+# 撤销特定提交
+git revert <commit-hash>
+
+# 强制回退到某个版本
+git reset --hard <commit-hash>
+git push --force
 ```
 
-### 禁用某个 cron 任务
+### 2. 文件恢复
 ```bash
-openclaw cron disable <任务ID>
-# 或在任务运行时：
-openclaw cron remove <任务ID>
+# 恢复特定文件
+git checkout <commit-hash> -- path/to/file
+
+# 从备份恢复 docs/SYSTEM-REFERENCE.md
+cp docs/SYSTEM-REFERENCE.md docs/SYSTEM-REFERENCE.md.bak
 ```
 
-### 从备份恢复文件
+### 3. 文档恢复
 ```bash
-# 查看文件历史
-git log --oneline -- filename
-# 恢复文件到指定版本
-git checkout <commit-hash> -- filename
-```
+# 查看文档历史
+git log --follow docs/SYSTEM-REFERENCE.md
 
-### 恢复被 cron 误删的内容
-```bash
-# cron 在 memory/YYYY-MM-DD.md 中记录审计结果，不删除内容
-# 如需恢复任何被覆盖的文件：
-git log --all --full-history -- filename
+# 恢复文档到上一个版本
+git show HEAD~1:docs/SYSTEM-REFERENCE.md > docs/SYSTEM-REFERENCE.md
 ```
 
 ---
 
-*最后自动更新：2026-03-26 22:00*
+*此文档由 update-docs.sh 自动生成。请勿手动编辑，会被覆盖。*
