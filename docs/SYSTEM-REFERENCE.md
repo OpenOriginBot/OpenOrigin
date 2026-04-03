@@ -1,6 +1,6 @@
 # 🔧 SYSTEM-REFERENCE.md
 
-> _最后更新：2026-04-01 23:00:01_
+> _最后更新：2026-04-02 23:00:01_
 
 ---
 
@@ -89,8 +89,10 @@ OpenClaw Workspace
 
 | 文件 | 修改时间 |
 |------|----------|
+| memory/2026-04-02.md | 2026-04-02 |
+| docs/SYSTEM-REFERENCE.md | 2026-04-02 |
+| briefings/2026-04-02.md | 2026-04-02 |
 | memory/2026-04-01.md | 2026-04-01 |
-| docs/SYSTEM-REFERENCE.md | 2026-04-01 |
 | briefings/2026-04-01.md | 2026-04-01 |
 | memory/2026-03-31.md | 2026-03-31 |
 | briefings/2026-03-31.md | 2026-03-31 |
@@ -102,11 +104,24 @@ OpenClaw Workspace
 | team/DELEGATION-RULES.md | 2026-03-28 |
 | team/CROSS-DEPARTMENT-HANDOVER.md | 2026-03-28 |
 | team/AUTONOMY-PERMISSIONS.md | 2026-03-28 |
-| skills/index.json | 2026-03-28 |
-| memory/2026-03-28.md | 2026-03-28 |
 
 ### 📂 Git 变更（自 2026-03-27）
 
+8f9173a 📝 [2026-04-02 18:00] 工作区更新
+M	scripts/cron/logs/backup-20260402.log
+b5f067f 📝 [2026-04-02 12:00] 未跟踪 3 个文件
+A	briefings/2026-04-02.md
+A	memory/2026-04-02.md
+M	scripts/cron/logs/backup-20260402.log
+M	scripts/cron/logs/collect-ideas-20260402.log
+A	"team/meetings/2026-04-02-\346\257\217\346\227\245\345\220\214\346\255\245\344\274\232\350\256\256.md"
+7883c26 📝 [2026-04-02 06:00] 未跟踪 1 个文件
+M	scripts/cron/logs/backup-20260402.log
+A	scripts/cron/logs/collect-ideas-20260402.log
+b23ee3b 📝 [2026-04-02 00:00] 未跟踪 1 个文件
+M	docs/SYSTEM-REFERENCE.md
+M	scripts/cron/logs/backup-20260401.log
+A	scripts/cron/logs/backup-20260402.log
 30ca23d 📝 [2026-04-01 18:00] 工作区更新
 M	scripts/cron/logs/backup-20260401.log
 45ff2d0 📝 [2026-04-01 12:00] 未跟踪 3 个文件
@@ -142,21 +157,6 @@ f8a5d46 📝 [2026-03-30 12:00] 未跟踪 3 个文件
 A	briefings/2026-03-30.md
 A	memory/2026-03-30.md
 M	scripts/cron/logs/backup-20260330.log
-A	"team/meetings/2026-03-30-\346\257\217\346\227\245\345\220\214\346\255\245\344\274\232\350\256\256.md"
-9bf63a4 📝 [2026-03-30 06:00] 未跟踪 1 个文件
-M	scripts/cron/logs/backup-20260330.log
-A	scripts/cron/logs/collect-ideas-20260330.log
-8a96ece 📝 [2026-03-30 00:00] 未跟踪 1 个文件
-M	docs/SYSTEM-REFERENCE.md
-M	scripts/cron/logs/backup-20260329.log
-A	scripts/cron/logs/backup-20260330.log
-cc5d174 📝 [2026-03-29 18:00] 工作区更新
-M	scripts/cron/logs/backup-20260329.log
-71de5fc 📝 [2026-03-29 12:00] 未跟踪 2 个文件
-A	briefings/2026-03-29.md
-A	memory/2026-03-29.md
-M	projects/openzeno/src/data/ideas.json
-M	scripts/cron/logs/backup-20260329.log
 
 ### 📝 今日动态
 
