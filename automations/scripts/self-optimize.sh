@@ -53,11 +53,13 @@ audit_docs() {
     log "${BLUE}[审计] 文档偏差检测...${NC}"
     
     # 检查文档中引用的文件路径是否还存在
-    local doc_files=("$WORKSPACE/docs/"*.md "$WORKSPACE"/**/*.md 2>/dev/null)
+    local doc_files
+    doc_files=("$WORKSPACE/docs/"*.md)
     local broken_links=0
     
     # 检测 docs/ 下的文件中是否有引用失效的相对路径
-    for doc in "$WORKSPACE/docs/"*.md 2>/dev/null; do
+    shopt -s nullglob
+    for doc in "$WORKSPACE/docs/"*.md; do
         [ -f "$doc" ] || continue
         # 检查 ![](path) 或 [text](path) 引用
         while IFS= read -r line; do
@@ -84,7 +86,7 @@ audit_todos() {
     log "${BLUE}[审计] 待办清单整洁度...${NC}"
     
     # 检查 memory/ 日记中的待办是否超期
-    for memofile in "$MEMORY_DIR"/*.md 2>/dev/null; do
+    for memofile in "$MEMORY_DIR"/*.md; do
         [ -f "$memofile" ] || continue
         
         # 查找超期待办（[ ] 格式且包含日期）
@@ -94,7 +96,10 @@ audit_todos() {
         done < "$memofile"
         
         # 检查是否有过多未完成待办
-        local open_todos=$(grep -c "\- \[ \]" "$memofile" 2>/dev/null || echo 0)
+        local open_todos
+        open_todos=$(grep -c "\- \[ \]" "$memofile" 2>/dev/null || echo "0")
+        open_todos=${open_todos//[^0-9]/}
+        [ -z "$open_todos" ] && open_todos=0
         [ "$open_todos" -gt 10 ] && add_issue "待办积压: $(basename $memofile) 有 $open_todos 个未完成" 2
     done
     
@@ -111,7 +116,7 @@ audit_links() {
     local link_count=0
     local broken_count=0
     
-    for doc in "$WORKSPACE"/**/*.md 2>/dev/null; do
+    for doc in $(find "$WORKSPACE" -name "*.md" -type f 2>/dev/null | head -30); do
         [ -f "$doc" ] || continue
         [ $link_count -gt 20 ] && break
         
@@ -139,7 +144,7 @@ audit_files() {
         add_issue "临时缓存: node_modules/.cache 存在，可清理" 1
     
     # 检测长期未修改的日志文件
-    for logfile in "$WORKSPACE"/**/*.log 2>/dev/null; do
+    for logfile in $(find "$WORKSPACE" -name "*.log" -type f 2>/dev/null | head -20); do
         [ -f "$logfile" ] || continue
         local mod_date=$(stat -f "%Sm" -t "%Y-%m-%d" "$logfile" 2>/dev/null || \
                          stat -c "%y" "$logfile" 2>/dev/null | cut -d' ' -f1)
@@ -147,7 +152,7 @@ audit_files() {
     done
     
     # 检测空的或只有标题的 md 文件
-    for mdfile in "$WORKSPACE"/**/*.md 2>/dev/null; do
+    for mdfile in $(find "$WORKSPACE" -name "*.md" -type f 2>/dev/null | head -30); do
         [ -f "$mdfile" ] || continue
         local lines=$(wc -l < "$mdfile")
         [ "$lines" -le 1 ] && add_issue "空文档: $mdfile" 1
@@ -163,7 +168,7 @@ audit_prompts() {
     log "${BLUE}[审计] 提示词效率检测...${NC}"
     
     # 检测 SOUL.md, AGENTS.md 等文件中的提示词长度
-    for prompt_file in "$WORKSPACE/SOUL.md" "$WORKSPACE/AGENTS.md" "$WORKSPACE/USER.md" 2>/dev/null; do
+    for prompt_file in "$WORKSPACE/SOUL.md" "$WORKSPACE/AGENTS.md" "$WORKSPACE/USER.md"; do
         [ -f "$prompt_file" ] || continue
         local lines=$(wc -l < "$prompt_file")
         local chars=$(wc -c < "$prompt_file")
@@ -172,7 +177,10 @@ audit_prompts() {
         [ "$lines" -gt 500 ] && add_issue "冗长提示: $(basename $prompt_file) ($lines 行, ${chars}字符)，考虑拆分" 2
         
         # 检测重复的指令模式
-        local dups=$(grep -c "永远不" "$prompt_file" 2>/dev/null || echo 0)
+        local dups
+        dups=$(grep -c "永远不" "$prompt_file" 2>/dev/null || echo "0")
+        dups=${dups//[^0-9]/}
+        [ -z "$dups" ] && dups=0
         [ "$dups" -gt 5 ] && add_issue "重复约束: $(basename $prompt_file) 有 $dups 个'永远不'声明" 1
     done
     

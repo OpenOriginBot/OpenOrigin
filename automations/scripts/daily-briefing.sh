@@ -15,8 +15,7 @@ TODAY=$(date +%Y-%m-%d)
 BRIEFING_FILE="$MEMORY_DIR/briefing-${TODAY}.md"
 
 # 夜间活动时间段 (昨晚18:00到今早08:00)
-NIGHT_START=$(date -v-14h +%Y-%m-%d\ %H:%M 2>/dev/null || date -d "14 hours ago" +%Y-%m-%d\ %H:%M)
-YESTERDAY=$(date -v-1d +%Y-%m-%d 2>/dev/null || date -d "yesterday" +%Y-%m-%d)
+YESTERDAY=$(python3 -c "from datetime import datetime,timedelta; print((datetime.now()-timedelta(days=1)).strftime('%Y-%m-%d'))" 2>/dev/null || date -v-1d +%Y-%m-%d)
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'

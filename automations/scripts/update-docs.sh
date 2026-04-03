@@ -9,6 +9,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE="/Users/liam/.openclaw/workspace"
+MEMORY_DIR="$WORKSPACE/memory"
 LOG_FILE="$SCRIPT_DIR/../logs/docs-update-$(date +%Y%m%d).log"
 TODAY=$(date +%Y-%m-%d)
 DOCS_FILE="$WORKSPACE/docs/SYSTEM-REFERENCE.md"
@@ -94,7 +95,7 @@ read_cron_tasks() {
     fi
     
     # 检查 automations 脚本
-    for script in "$SCRIPT_DIR"/*.sh 2>/dev/null; do
+    for script in "$SCRIPT_DIR"/*.sh; do
         [ -f "$script" ] || continue
         local name=$(basename "$script" .sh)
         local shebang=$(head -1 "$script")
