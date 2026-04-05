@@ -14,6 +14,15 @@
 | 拼多多 | [店铺名] | [店铺ID] |
 | 其他 | [平台名] | [账号] |
 
+## 数据库
+
+| 服务 | 连接信息 | 状态 |
+|------|----------|------|
+| Supabase PostgreSQL | `aws-1-ap-northeast-1.pooler.supabase.com:5432` | ✅ 已连接 |
+
+- 凭证保存在：`~/.openclaw/credentials/supabase.json`
+- 需要在 Supabase 面板开启"允许从任何IP连接"或加白名单
+
 ## 供应商白名单
 
 | 供应商 | 主营产品 | 价格区间 | 交期 | 备注 |
