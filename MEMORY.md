@@ -7,12 +7,35 @@
 
 ## 商家/平台账号
 
+> ⚠️ 警告（2026-04-06）：MEMORY.md 曾为占位模板，以下数据均为虚构占位，非真实业务数据。
+> 需与老板确认实际使用的平台账号。
+
 | 平台 | 账号 | 备注 |
 |------|------|------|
 | 1688 | [账号名/手机号] | 主要采购渠道 |
 | 淘宝店铺 | [店铺名] | [店铺ID] |
 | 拼多多 | [店铺名] | [店铺ID] |
 | 其他 | [平台名] | [账号] |
+
+---
+
+## ⚠️ 工作空间实际身份（2026-04-06 确认）
+
+本 workspace **并非灯带电商业务**，而是：
+
+| 项目 | 内容 |
+|------|------|
+| 角色 | OpenClaw AI Agent 管理与自动化工作空间 |
+| 实际项目 | `projects/OpenOrigin` — React AI Agent 命令中心（Vite+Tailwind+Framer Motion） |
+| 实际目录 | `automations/`、`docs/`、`memory/`、`projects/`、`scripts/` |
+| 文档问题 | TOOLS.md / SOUL.md / AGENTS.md / USER.md 均描述虚构灯带电商，与实际严重不符，需重写 |
+
+**自我优化审计发现（2026-04-06）：**
+- `TOOLS.md`：声称 workspace 有 `data/{suppliers,products,inventory}.md`、`reports/`、`orders/` 等，实际均不存在
+- `SOUL.md`：自称"电商运营搭档"，但无任何电商业务
+- `IDENTITY.md`：未填充（Name/Creature/Emoji 全为 placeholder）
+- `USER.md`：全为占位符（[您的姓名]等）
+- 建议：重写 SOUL.md / USER.md / TOOLS.md 以反映实际，或与老板确认是否要转型电商
 
 ## 数据库
 
@@ -40,12 +63,13 @@
 
 ## 项目进展
 
-### [项目名] — [状态：进行中/已完成/暂停]
-- **目标：** [简单描述]
-- **当前状态：** [关键节点]
-- **待办：** [ ] 待处理事项
-- **负责人：** 老板/小猿
-- **更新时间：** 2026-03-26
+### OpenOrigin — AI Agent 命令中心 — 进行中
+- **目标：** 构建可视化 AI Agent 管理系统（Dashboard / Brain / Ops / Lab 等模块）
+- **技术栈：** React + Vite + Tailwind CSS + Framer Motion + Lucide Icons + Recharts
+- **当前状态：** 核心模块已完成，包含 Dashboard、Agents、Ops、Brain、Lab、Meetings、Logs、Parliament
+- **待办：** 完善 IDENTITY.md（身份尚未确立）
+- **负责人：** Liam（用户）
+- **更新时间：** 2026-04-06
 
 ---
 
@@ -89,4 +113,4 @@
 
 ---
 
-_最后更新：2026-03-26_
+_最后更新：2026-04-06_

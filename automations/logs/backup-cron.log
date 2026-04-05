@@ -300,3 +300,7 @@ To https://github.com/OpenOriginBot/OpenOrigin.git
    2ccce3a..a1798ed  main -> auto-backup/liams-Mac-mini.local
 [00:00:07] [0;32m[成功] 推送到 auto-backup/liams-Mac-mini.local[0m
 [00:00:07] [0;32m=== 备份完成，耗时 5s ===[0m
+[06:00:02] [0;34m=== 仓库备份开始 ===[0m
+[06:00:02] [0;34m[检查] 前置检查...[0m
+[06:00:02] [0;32m[OK] 前置检查通过[0m
+[06:00:02] [0;34m[暂存] git add -A[0m
