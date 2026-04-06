@@ -4,7 +4,7 @@
  */
 
 const SB_URL = 'https://fippycifijhcmsrxoylr.supabase.co'
-const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpcHB5Y2lmaWpoY21zcnhveWxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUxNjk4NjAsImV4cCI6MjA2MDc0NTg2MH0.gG84PMxGOKFrT40aY8aWU7ZTh-ZXa-TreUcfT0L8v6c'
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpcHB5Y2lmaWpoY21zcnhveWxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzOTU2NjgsImV4cCI6MjA5MDk3MTY2OH0.CM2zy328XkxfiMa7rZPZS59XZfX7j_PK2wZiC8f5nAY'
 
 const HEADERS = {
   'apikey': SB_KEY,

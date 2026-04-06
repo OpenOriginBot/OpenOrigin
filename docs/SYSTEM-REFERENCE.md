@@ -1,29 +1,37 @@
 # 系统参考文档
 
 > 自动生成的系统文档。每晚23:00自动更新。  
-> 上次更新: 2026-04-05 23:00:06
+> 上次更新: 2026-04-06 23:00:03
 
 ---
 
-## 📝 今日变更 (2026-04-05)
+## 📝 今日变更（2026-04-06）
 
-- **18:00** 自动备份触发，`2ccce3a` → 成功推送至 auto-backup/liams-Mac-mini.local
-- **12:00** 自动备份触发，`68d9bbb` +2 新增文件
-- **06:00** 自动备份触发，`320297e`
-- **00:00** 自动备份触发，`03dee22` +2 新增文件
+**今日提交 (10 个文件，+583/-278)**
 
-**今日修改文件（共4个）：**
-  - `MEMORY.md` — 长期记忆更新
-  - `automations/backups/.last-backup` — 备份时间戳更新
-  - `automations/logs/backup-20260405.log` — 备份日志追加
-  - `automations/logs/backup-cron.log` — Cron触发记录
+### 🔌 后端重构：PostgreSQL → Supabase REST (PostgREST)
+- `projects/OpenOrigin/api/index.js` — **重大重构**
+  - 移除 `pg` Pool，直接改用 Supabase REST API（`sbGet/sbPost/sbPatch/sbDelete`）
+  - 所有数据库操作改走 `GET/POST/PATCH/DELETE /rest/v1/{table}` 端点
+  - 移除了 `INIT_SQL` 初始化逻辑（REST 模式下无需手动建表）
+  - 新增 **Memory 模块**完整 CRUD：记忆提交 `/memory/`、记忆审批 `/memory/{id}/approve`
+  - `handleMeetingStats` 改为并行 Promise.all 调用
+  - `handleParliament` POST 拆解为多步插入后重新 fetch 完整对象
+  - 所有错误处理增加 404 判断
+- `projects/OpenOrigin/api/supabase.js`
+  - Supabase API Key 已轮换（iat: 1775395668, exp: 2090971668）
 
-**今日提交（5个）：**
-  - `03dee22` 00:00 自动备份 | +2新增
-  - `c624621` chore: 备份日志与定时任务状态更新
-  - `320297e` 06:00 自动备份
-  - `68d9bbb` 12:00 自动备份 | +2新增
-  - `2ccce3a` 18:00 自动备份
+### 🧠 前端新增：记忆注册模块
+- `projects/OpenOrigin/src/App.jsx` — 新增「记忆」Tab 及 Brain 图标
+  - 导入 `MemoryRegistry` 组件，路由到 `id: 'memory'`
+- `projects/OpenOrigin/src/services/api.js` — 新增 3 个记忆 API 调用
+  - `fetchMemories({ category, agentName, includePending })` — GET /memory
+  - `submitMemory({ agentName, category, content })` — POST /memory/
+  - `approveMemory(memoryId, approved)` — PATCH /memory/{id}/approve
+
+### 📋 日常记录
+- `memory/2026-04-06.md` — 今日工作记忆已记录
+- `automations/logs/backup-*.log` — 备份日志正常更新
 
 ---
 
@@ -35,15 +43,13 @@
 
 ### 目录结构
 
-[23:00:06] [分析] 项目结构...
-
-
-**目录结构:**
-  - automations/ (0 文件)
-  - docs/ (2 文件)
-  - memory/ (9 文件)
-  - projects/ (12118 文件)
-  - scripts/ (0 文件)
+```
+automations/  (0 文件)
+docs/         (2 文件)
+memory/       (11 文件)
+projects/     (12222 文件)
+scripts/      (0 文件)
+```
 
 ---
 
@@ -58,42 +64,26 @@
 | Parliament | src/modules/Parliament/ | 多Agent讨论界面 |
 | Meetings | src/modules/Meetings/ | 会议情报 - 会议记录与分析 |
 | Ops | src/modules/Ops/ | 任务管理 - 任务创建/筛选 |
-| Brain | src/modules/Brain/ | 每日简报生成 |
+| Brain | src/modules/Brain/ | 每日简报生成 + **记忆注册（新增）** |
 | Lab | src/modules/Lab/ | 实验仪表盘 |
 
 ---
 
 ## ⏰ 活跃定时任务
 
-[23:00:06] [分析] 定时任务...
+| 任务 | 脚本 | 定时规则 | 说明 |
+|------|------|----------|------|
+| 每日简报 | automations/scripts/daily-briefing.sh | 30 8 * * * | 生成每日摘要 |
+| 夜间优化 | automations/scripts/self-optimize.sh | 0 2 * * * | 审计+低风险修复 |
+| 文档更新 | automations/scripts/update-docs.sh | 0 23 * * * | 滚动更新系统文档 |
+| 仓库备份 | automations/scripts/backup-repo.sh | 0 */6 * * * | 每6小时备份 |
 
+### 最近执行状态
 
-**HEARTBEAT 任务:**
-  # HEARTBEAT.md
-  
-  ## 活跃定时任务
-  
-  | 任务 | 脚本 | 定时规则 | 说明 |
-  |------|------|----------|------|
-  | 每日简报 | automations/scripts/daily-briefing.sh | 30 8 * * * | 生成每日摘要 |
-  | 夜间优化 | automations/scripts/self-optimize.sh | 0 2 * * * | 审计+低风险修复 |
-  | 文档更新 | automations/scripts/update-docs.sh | 0 23 * * * | 滚动更新系统文档 |
-  | 仓库备份 | automations/scripts/backup-repo.sh | 0 */6 * * * | 每6小时备份 |
-  
-  ## 最近执行状态
-  
-  - **2026-04-03 21:36** backup-repo.sh ✅ 成功
-  - **2026-04-03 21:38** self-optimize.sh ✅ 得分 92/100
-  - **2026-04-03 21:39** daily-briefing.sh ✅ 成功
-  - **2026-04-03 21:40** update-docs.sh ✅ 成功
-  
-  ## 文档
-  
-  配置说明：`docs/AUTOMATIONS.md`
-  - backup-repo: 
-  - daily-briefing: 
-  - self-optimize: 
-  - update-docs: 
+- **2026-04-03 21:36** backup-repo.sh ✅ 成功
+- **2026-04-03 21:38** self-optimize.sh ✅ 得分 92/100
+- **2026-04-03 21:39** daily-briefing.sh ✅ 成功
+- **2026-04-03 21:40** update-docs.sh ✅ 成功
 
 ---
 
@@ -108,61 +98,36 @@
 
 ---
 
-## 🐛 已知问题
+## ⚠️ 已知问题 / 待解决
 
-[23:00:06] [分析] 已知问题...
+### Telegram Delivery 持续性故障（自 2026-04-05 起）
+- **问题：** 3 个 Cron 任务（Telegram投递）报 error，`recipient @heartbeat could not be resolved to a numeric chat ID (400: Bad Request: chat not found)`
+- **影响任务：** 滚动式OS文档、私有仓库备份、夜间自我改进
+- **状态：** 🟡 中 — 待修复 Telegram bot token / chat ID 配置
 
+### 自优化得分尚有提升空间
+- **当前：** 92/100（低风险）
+- **建议：** 定期处理 TODO、逾期待办
 
----
-2026-03-28.md:
-  - [ ] 检查并修复 3 个错误状态的 Cron 任务（滚动式OS文档、私有仓库备份、夜间自我改进）
-  - 建议尽快查看这些任务的最近执行日志，定位失败原因
-
----
-2026-03-31.md:
-  - 无（本次未发现任何问题）
-
----
-2026-04-04.md:
-  3. **自优化得分尚有提升空间**：当前 92/100，发现的问题（TODO、逾期待办）属于低风险，但建议定期处理。
-
----
-2026-04-05.md:
-  - [ ] 修复 3 个 Cron error 状态任务（Telegram 投递失败，recipient @heartbeat 无法解析）
-  **⚠️ 昨夜警报：** 4 个 Cron 任务中仅 1 个（每日简报）实际执行，但因 Telegram 投递失败而报 error。备份、文档更新、夜间优化均未执行成功。
-  | 🔴 高 | 修复 Telegram delivery 配置 | 3 个任务的 failureAlert.to = "telegram:6810379425"，但 recipient @heartbeat 解析失败 |
-  | 🟡 中 | 补跑昨夜失败的 3 个任务 | 滚动式OS文档、私有仓库备份、夜间自我改进 |
-  1. **Cron 任务 Telegram 投递失败**（持续性问题）：
-
----
-briefing-2026-04-03.md:
-    - [ ] 检查并修复 3 个错误状态的 Cron 任务（滚动式OS文档、私有仓库备份、夜间自我改进）
-
----
-briefing-2026-04-04.md:
-    - [ ] 检查并修复 3 个错误状态的 Cron 任务（滚动式OS文档、私有仓库备份、夜间自我改进）
-      - [ ] 检查并修复 3 个错误状态的 Cron 任务（滚动式OS文档、私有仓库备份、夜间自我改进）
-
----
-briefing-2026-04-05.md:
-    - [ ] 检查并修复 3 个错误状态的 Cron 任务（滚动式OS文档、私有仓库备份、夜间自我改进）
-      - [ ] 检查并修复 3 个错误状态的 Cron 任务（滚动式OS文档、私有仓库备份、夜间自我改进）
-      - [ ] 检查并修复 3 个错误状态的 Cron 任务（滚动式OS文档、私有仓库备份、夜间自我改进）
-        - [ ] 检查并修复 3 个错误状态的 Cron 任务（滚动式OS文档、私有仓库备份、夜间自我改进）
+### Cron 任务补跑建议
+- [ ] 昨夜失败的 3 个任务（backup-repo / update-docs / self-optimize）可补跑
 
 ---
 
-## 📊 系统状态
+## 📁 关键文件索引
 
-- 今日提交: 5
-- 备份状态: success
-- 最后备份: 2026-04-05 18:00:04
+| 文件 | 说明 |
+|------|------|
+| `projects/OpenOrigin/api/index.js` | API 主入口（已重构为 Supabase REST） |
+| `projects/OpenOrigin/api/supabase.js` | Supabase 连接配置 |
+| `projects/OpenOrigin/src/services/api.js` | 前端 API 客户端（含 Memory 模块） |
+| `projects/OpenOrigin/src/App.jsx` | React 根组件（含新增 Memory Tab） |
+| `automations/scripts/*.sh` | 定时任务脚本 |
+| `docs/SYSTEM-REFERENCE.md` | 本文档 |
 
 ---
 
 ## 🔄 回滚指南
-
-如需撤销自动化产生的错误修改：
 
 ### 1. Git 回滚
 ```bash

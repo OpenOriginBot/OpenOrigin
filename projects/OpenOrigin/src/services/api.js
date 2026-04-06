@@ -97,3 +97,44 @@ export async function fetchMeetingStats() {
     actionsOpen,
   };
 }
+
+// ─── Memory ─────────────────────────────────────────────────────────────────────
+
+const CATEGORIES = ['技术', '偏好', '项目', '过程']
+
+export { CATEGORIES }
+
+export async function fetchMemories({ category, agentName, includePending = false } = {}) {
+  const params = new URLSearchParams()
+  if (category) params.set('category', category)
+  if (agentName) params.set('agent_name', agentName)
+  if (includePending) params.set('include_pending', 'true')
+  const qs = params.toString()
+  return get(`/memory/${qs ? `?${qs}` : ''}`)
+}
+
+export async function submitMemory({ agentName, category, content }) {
+  const res = await fetch(`${API_BASE_URL}/memory/`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ agent_name: agentName, category, content }),
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: 'Failed' }))
+    throw new Error(err.detail || `API ${res.status}`)
+  }
+  return res.json()
+}
+
+export async function approveMemory(memoryId, approved = true) {
+  const res = await fetch(`${API_BASE_URL}/memory/${memoryId}/approve`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ approved }),
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: 'Failed' }))
+    throw new Error(err.detail || `API ${res.status}`)
+  }
+  return res.json()
+}
