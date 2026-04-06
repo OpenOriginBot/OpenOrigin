@@ -1,12 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { agents } from '../../data/mockData';
+import { fetchAgents } from '../../services/api';
+
+function normalizeAgent(a) {
+  return {
+    id: a.id,
+    emoji: a.emoji || '🤖',
+    name: a.name,
+    subtitle: a.subtitle || '',
+    type: a.type || 'Agent',
+    role: a.role || '',
+    color: a.color || '#10b981',
+    status: a.status,
+    currentActivity: a.current_activity || a.currentActivity || '—',
+    completedTasks: a.completed_tasks ?? a.completedTasks ?? 0,
+    accuracy: a.accuracy ?? 0,
+    skills: a.skills || [],
+  };
+}
 
 const statusLabels = { online: '在线', idle: '闲置', error: '异常', offline: '离线' };
 const statusColors = { online: '#10b981', idle: '#f59e0b', error: '#ef4444', offline: '#6b7280' };
 
 export default function AgentProfiles() {
+  const [agents, setAgents] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null);
+
+  useEffect(() => {
+    fetchAgents()
+      .then(data => setAgents((data || []).map(normalizeAgent)))
+      .catch(() => setAgents([]))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <div>

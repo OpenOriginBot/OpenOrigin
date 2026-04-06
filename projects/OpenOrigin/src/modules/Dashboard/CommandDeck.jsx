@@ -1,13 +1,46 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { metrics, recentActivity, agents } from '../../data/mockData';
+import { fetchAgents, fetchMetrics } from '../../services/api';
 import { formatDistanceToNow } from 'date-fns';
 
+// Normalize API → mock shape
+function normalizeAgent(a) {
+  return {
+    id: a.id,
+    emoji: a.emoji || '🤖',
+    name: a.name,
+    subtitle: a.subtitle || '',
+    status: a.status,
+    currentActivity: a.current_activity || a.currentActivity || '',
+    lastSeen: a.last_seen ? new Date(a.last_seen) : (a.lastSeen ? new Date(a.lastSeen) : new Date()),
+    color: a.color || '#10b981',
+    completedTasks: a.completed_tasks ?? a.completedTasks ?? 0,
+    accuracy: a.accuracy ?? 0,
+  };
+}
+
 const metricIcons = {
-  CheckSquare: () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>,
-  Users: () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
-  Zap: () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
-  Activity: () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
+  CheckSquare: () => (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+    </svg>
+  ),
+  Users: () => (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+  ),
+  Zap: () => (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+    </svg>
+  ),
+  Activity: () => (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+    </svg>
+  ),
 };
 
 function AnimatedNumber({ value, suffix = '' }) {
@@ -34,19 +67,55 @@ function AnimatedNumber({ value, suffix = '' }) {
   return <span>{typeof value === 'number' && value % 1 !== 0 ? display.toFixed(1) : display}{suffix}</span>;
 }
 
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.05 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-};
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.05 } } };
+const fadeUp = { hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0, transition: { duration: 0.3 } } };
 
 export default function CommandDeck() {
+  const [metrics, setMetrics] = useState([]);
+  const [agents, setAgents] = useState([]);
+  const [recentActivity, setRecentActivity] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => { setMounted(true); }, []);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const [agentsData, metricsData] = await Promise.all([fetchAgents(), fetchMetrics()]);
+        const norm = (agentsData || []).map(normalizeAgent);
+        setAgents(norm);
+        setMetrics([
+          { label: 'Active Tasks', value: metricsData.totalTasks, change: '+12%', icon: 'CheckSquare', trend: 'up' },
+          { label: 'Agents Online', value: metricsData.onlineAgents, change: `${metricsData.totalAgents} total`, icon: 'Users', trend: 'neutral' },
+          { label: 'Events Today', value: metricsData.eventsProcessed, change: '+23%', icon: 'Zap', trend: 'up' },
+          { label: 'Uptime', value: parseFloat(metricsData.uptime), change: '+0.1%', icon: 'Activity', trend: 'up', suffix: '%' },
+        ]);
+        // Build recent activity from agent last_seen
+        setRecentActivity(
+          norm.map(a => ({
+            id: a.id,
+            agent: a.emoji,
+            action: a.currentActivity || 'Idle',
+            time: a.lastSeen,
+          })).sort((a, b) => new Date(b.time) - new Date(a.time)).slice(0, 10)
+        );
+      } catch (e) {
+        console.error('Failed to load dashboard data:', e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, []);
+
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 400 }}>
+        <span style={{ color: 'var(--color-text-muted)', fontSize: 14 }}>Loading dashboard...</span>
+      </div>
+    );
+  }
 
   return (
     <motion.div variants={stagger} initial="hidden" animate={mounted ? 'show' : 'hidden'}>
@@ -75,7 +144,7 @@ export default function CommandDeck() {
               </div>
               <div style={{ marginTop: 14 }}>
                 <div style={{ fontSize: 32, fontWeight: 700, lineHeight: 1, fontFamily: 'var(--font-mono)' }}>
-                  <AnimatedNumber value={m.value} suffix={m.suffix} />
+                  <AnimatedNumber value={m.value} suffix={m.suffix || ''} />
                 </div>
                 <div style={{ fontSize: 13, color: 'var(--color-text-muted)', marginTop: 4 }}>{m.label}</div>
               </div>
@@ -85,7 +154,7 @@ export default function CommandDeck() {
       </div>
 
       {/* Bottom Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 16, responsive: true }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 16 }}>
         {/* Activity Feed */}
         <motion.div variants={fadeUp} className="glass-card" style={{ padding: 20 }}>
           <h3 style={{ margin: '0 0 16px', fontSize: 14, fontWeight: 600, color: 'var(--color-text-secondary)' }}>
@@ -109,7 +178,7 @@ export default function CommandDeck() {
                 <span style={{ fontSize: 15, flexShrink: 0 }}>{item.agent}</span>
                 <span style={{ flex: 1, fontSize: 13, color: 'var(--color-text-secondary)' }}>{item.action}</span>
                 <span style={{ fontSize: 11, color: 'var(--color-text-muted)', whiteSpace: 'nowrap' }}>
-                  {formatDistanceToNow(item.time, { addSuffix: false, locale: { formatDistance: () => '' } })}
+                  {item.time ? formatDistanceToNow(new Date(item.time), { addSuffix: false }) : ''}
                 </span>
               </motion.div>
             ))}
@@ -123,7 +192,7 @@ export default function CommandDeck() {
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {agents.map(agent => {
-              const statusColor = { online: '#10b981', idle: '#f59e0b', error: '#ef4444', offline: '#6b7280' }[agent.status];
+              const statusColor = { online: '#10b981', idle: '#f59e0b', error: '#ef4444', offline: '#6b7280' }[agent.status] || '#6b7280';
               return (
                 <div key={agent.id} style={{
                   padding: 12, borderRadius: 8,
@@ -139,10 +208,10 @@ export default function CommandDeck() {
                     }} />
                   </div>
                   <div style={{ fontSize: 12, color: 'var(--color-text-muted)', marginBottom: 4 }}>
-                    {agent.currentActivity}
+                    {agent.currentActivity || '—'}
                   </div>
                   <div style={{ fontSize: 11, color: 'var(--color-text-muted)' }}>
-                    {agent.status === 'online' ? '刚刚' : `最后 ${formatDistanceToNow(agent.lastSeen)}`}
+                    {agent.status === 'online' ? '刚刚' : agent.lastSeen ? `最后 ${formatDistanceToNow(new Date(agent.lastSeen))}` : ''}
                   </div>
                 </div>
               );

@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { parliamentSessions } from '../../data/mockData';
+import { fetchParliament } from '../../services/api';
 import { formatDistanceToNow } from 'date-fns';
 
 const stanceColors = { in_favor: '#10b981', against: '#ef4444', conditional: '#f59e0b' };
@@ -11,14 +11,43 @@ const statusConfig = {
   decided: { label: '已决定', color: '#10b981' },
 };
 
+function normalizeSession(s) {
+  return {
+    id: s.id,
+    question: s.question,
+    status: s.status,
+    participants: (s.participants || []).map(p => ({
+      agent: p.agent || '🤖',
+      name: p.name || 'Agent',
+      stance: p.stance,
+      status: p.status,
+    })),
+    messages: (s.messages || []).map((m, mi) => ({
+      agent: m.agent || '🤖',
+      name: m.name || 'Agent',
+      text: m.text || m.message || '',
+      time: m.created_at ? new Date(m.created_at) : (m.time ? new Date(m.time) : new Date()),
+    })),
+  };
+}
+
 export default function Parliament() {
+  const [sessions, setSessions] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState(null);
+
+  useEffect(() => {
+    fetchParliament()
+      .then(data => setSessions((data || []).map(normalizeSession)))
+      .catch(() => setSessions([]))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <div>
       <h2 style={{ margin: '0 0 20px', fontSize: 18, fontWeight: 600 }}>议会</h2>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-        {parliamentSessions.map((session, i) => {
+        {sessions.map((session, i) => {
           const isOpen = expanded === session.id;
           const status = statusConfig[session.status];
 

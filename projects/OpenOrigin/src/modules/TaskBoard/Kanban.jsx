@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { tasks as initialTasks } from '../../data/mockData';
+import { fetchTasks } from '../../services/api';
 
 const COLUMNS = [
   { id: 'todo', label: '待办', color: '#6b7280' },
@@ -14,9 +14,30 @@ const priorityColors = {
 };
 const priorityLabels = { low: '低', medium: '中', high: '高', urgent: '紧急' };
 
+function normalizeTask(t) {
+  // API uses status (todo/progress/input/done) while mock uses col
+  const col = t.status || t.col || 'todo';
+  return {
+    id: t.id,
+    title: t.title,
+    agent: t.agent || t.agent_id || '',
+    priority: t.priority,
+    col,
+    progress: t.progress ?? null,
+  };
+}
+
 export default function Kanban() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [dragging, setDragging] = useState(null);
+
+  useEffect(() => {
+    fetchTasks()
+      .then(data => setTasks((data || []).map(normalizeTask)))
+      .catch(() => setTasks([]))
+      .finally(() => setLoading(false));
+  }, []);
 
   const moveTask = (taskId, newCol) => {
     setTasks(prev => prev.map(t => t.id === taskId ? { ...t, col: newCol } : t));

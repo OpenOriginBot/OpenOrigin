@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer
 } from 'recharts';
 import DOMPurify from 'dompurify';
-import { meetings, meetingStats, meetingTypeDistribution, monthlyTrend } from '../../data/mockData';
+import { fetchMeetings, fetchMeetingStats } from '../../services/api';
 import { formatDistanceToNow, format, differenceInMinutes } from 'date-fns';
 
 const typeConfig = {
@@ -17,7 +17,7 @@ const typeConfig = {
   team: { label: '团队会议', color: '#fb923c' },
 };
 
-const typeColors = meetingTypeDistribution.reduce((acc, t) => {
+const typeColors = meetingTypeDistribution?.reduce((acc, t) => {
   acc[t.name.toLowerCase().replace('-', '')] = t.color;
   return acc;
 }, {});
@@ -295,10 +295,61 @@ function MeetingDetail({ meeting, onClose }) {
 }
 
 export default function MeetingIntelligence() {
+  const [meetings, setMeetings] = useState([]);
+  const [stats, setStats] = useState({ total: 0, thisWeek: 0, openActions: 0, avgDuration: 0 });
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
   const [dateRange, setDateRange] = useState('all');
   const [selected, setSelected] = useState(null);
+
+  useEffect(() => {
+    Promise.all([fetchMeetings(), fetchMeetingStats()])
+      .then(([meetingsData, statsData]) => {
+        setMeetings(meetingsData || []);
+        if (statsData) setStats({
+          total: statsData.total || 0,
+          thisWeek: statsData.this_week || 0,
+          openActions: statsData.open_actions || 0,
+          avgDuration: Math.round(statsData.avg_duration || 0),
+        });
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
+
+  // Compute type distribution from real data
+  const meetingTypeDistribution = useMemo(() => {
+    const map = {};
+    meetings.forEach(m => {
+      const t = m.meeting_type || 'other';
+      map[t] = (map[t] || 0) + 1;
+    });
+    const colors = ['#60a5fa', '#a78bfa', '#34d399', '#fb923c', '#818cf8', '#2dd4bf'];
+    return Object.entries(map).map(([name], i) => ({
+      name: name.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+      value: map[name],
+      color: colors[i % colors.length],
+    }));
+  }, [meetings]);
+
+  // Compute monthly trend from real data
+  const monthlyTrend = useMemo(() => {
+    const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const now = new Date();
+    const last6 = Array.from({ length: 6 }, (_, i) => {
+      const d = new Date(now.getFullYear(), now.getMonth() - 5 + i, 1);
+      return monthNames[d.getMonth()];
+    });
+    const counts = {};
+    meetings.forEach(m => {
+      if (!m.date) return;
+      const d = new Date(m.date);
+      const key = monthNames[d.getMonth()];
+      if (last6.includes(key)) counts[key] = (counts[key] || 0) + 1;
+    });
+    return last6.map(month => ({ month, count: counts[month] || 0 }));
+  }, [meetings]);
 
   const filtered = meetings.filter(m => {
     const matchSearch = m.title.toLowerCase().includes(search.toLowerCase());
@@ -312,10 +363,10 @@ export default function MeetingIntelligence() {
 
       {/* KPI Row */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 14, marginBottom: 20 }}>
-        <KPICard icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>} label="总会议" value={meetingStats.total} />
-        <KPICard icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>} label="本周" value={meetingStats.thisWeek} />
-        <KPICard icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>} label="待处理行动项" value={meetingStats.openActions} />
-        <KPICard icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>} label="平均时长" value={`${meetingStats.avgDuration}m`} />
+        <KPICard icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>} label="总会议" value={stats.total} />
+        <KPICard icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>} label="本周" value={stats.thisWeek} />
+        <KPICard icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>} label="待处理行动项" value={stats.openActions} />
+        <KPICard icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>} label="平均时长" value={`${stats.avgDuration}m`} />
       </div>
 
       {/* Charts Row */}
