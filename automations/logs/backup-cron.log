@@ -337,3 +337,65 @@ To https://github.com/OpenOriginBot/OpenOrigin.git
 [12:00:02] [0;34m[检查] 前置检查...[0m
 [12:00:02] [0;32m[OK] 前置检查通过[0m
 [12:00:02] [0;34m[暂存] git add -A[0m
+/Users/liam/.openclaw/workspace/automations/scripts/backup-repo.sh: line 87: [:        0
+0: integer expression expected
+/Users/liam/.openclaw/workspace/automations/scripts/backup-repo.sh: line 93: [:        0
+0: integer expression expected
+/Users/liam/.openclaw/workspace/automations/scripts/backup-repo.sh: line 96: [:        0
+0: integer expression expected
+[12:00:02] [0;32m[变更]       42 个文件变更[0m
+[12:00:02] [0;32m[提交] 📦 2026-04-06 12:00 自动备份 | +      29新增
+
+变更文件 (      42 个文件)[0m
+[main f15e253] 📦 2026-04-06 12:00 自动备份 | +      29新增\n\n变更文件 (      42 个文件)
+ Committer: liam <liam@liams-Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 42 files changed, 2932 insertions(+), 83 deletions(-)
+ create mode 100644 .gitignore
+ create mode 100644 automations/logs/briefing-20260406.log
+ create mode 100644 memory/briefing-2026-04-06.md
+ create mode 100644 projects/OpenOrigin/api/index.js
+ create mode 100644 projects/OpenOrigin/api/supabase.js
+ create mode 100644 projects/OpenOrigin/backend/app/__init__.py
+ create mode 100644 projects/OpenOrigin/backend/app/core/__init__.py
+ create mode 100644 projects/OpenOrigin/backend/app/core/config.py
+ create mode 100644 projects/OpenOrigin/backend/app/core/database.py
+ create mode 100644 projects/OpenOrigin/backend/app/main.py
+ create mode 100644 projects/OpenOrigin/backend/app/models/__init__.py
+ create mode 100644 projects/OpenOrigin/backend/app/models/models.py
+ create mode 100644 projects/OpenOrigin/backend/app/routers/__init__.py
+ create mode 100644 projects/OpenOrigin/backend/app/routers/agents.py
+ create mode 100644 projects/OpenOrigin/backend/app/routers/logs.py
+ create mode 100644 projects/OpenOrigin/backend/app/routers/meetings.py
+ create mode 100644 projects/OpenOrigin/backend/app/routers/parliament.py
+ create mode 100644 projects/OpenOrigin/backend/app/routers/tasks.py
+ create mode 100644 projects/OpenOrigin/backend/app/schemas/__init__.py
+ create mode 100644 projects/OpenOrigin/backend/app/schemas/schemas.py
+ create mode 100644 projects/OpenOrigin/backend/requirements.txt
+ create mode 100644 projects/OpenOrigin/backend/seed.py
+ create mode 100644 projects/OpenOrigin/src/config.js
+ create mode 100644 projects/OpenOrigin/src/services/api.js
+ create mode 100644 projects/dist-openorigin/assets/index-4MPnmZ4b.js
+ create mode 100644 projects/dist-openorigin/assets/index-DljmYIZs.css
+ create mode 100644 projects/dist-openorigin/favicon.svg
+ create mode 100644 projects/dist-openorigin/icons.svg
+ create mode 100644 projects/dist-openorigin/index.html
+[12:00:02] [0;34m[推送] 尝试 1/2...[0m
+To https://github.com/OpenOriginBot/OpenOrigin.git
+   f58298a..f15e253  main -> auto-backup/liams-Mac-mini.local
+[12:00:05] [0;32m[成功] 推送到 auto-backup/liams-Mac-mini.local[0m
+[12:00:05] [0;32m=== 备份完成，耗时 3s ===[0m
+[18:00:01] [0;34m=== 仓库备份开始 ===[0m
+[18:00:01] [0;34m[检查] 前置检查...[0m
+[18:00:01] [0;32m[OK] 前置检查通过[0m
+[18:00:01] [0;34m[暂存] git add -A[0m
