@@ -1,6 +1,6 @@
 # 🔧 SYSTEM-REFERENCE.md
 
-> _最后更新：2026-04-04 23:00:01_
+> _最后更新：2026-04-05 23:00:01_
 
 ---
 
@@ -89,8 +89,10 @@ OpenClaw Workspace
 
 | 文件 | 修改时间 |
 |------|----------|
+| memory/2026-04-05.md | 2026-04-05 |
+| docs/SYSTEM-REFERENCE.md | 2026-04-05 |
+| briefings/2026-04-05.md | 2026-04-05 |
 | memory/2026-04-04.md | 2026-04-04 |
-| docs/SYSTEM-REFERENCE.md | 2026-04-04 |
 | briefings/2026-04-04.md | 2026-04-04 |
 | memory/2026-04-03.md | 2026-04-03 |
 | briefings/2026-04-03.md | 2026-04-03 |
@@ -102,11 +104,23 @@ OpenClaw Workspace
 | briefings/2026-03-31.md | 2026-03-31 |
 | memory/2026-03-30.md | 2026-03-30 |
 | briefings/2026-03-30.md | 2026-03-30 |
-| memory/2026-03-29.md | 2026-03-29 |
-| briefings/2026-03-29.md | 2026-03-29 |
 
 ### 📂 Git 变更（自 2026-03-27）
 
+00a66da 📝 [2026-04-05 18:00] 工作区更新
+M	scripts/cron/logs/backup-20260405.log
+5e6664a 📝 [2026-04-05 12:00] 未跟踪 2 个文件
+A	briefings/2026-04-05.md
+A	memory/2026-04-05.md
+M	scripts/cron/logs/backup-20260405.log
+M	scripts/cron/logs/collect-ideas-20260405.log
+e3869ef 📝 [2026-04-05 06:00] 未跟踪 1 个文件
+M	scripts/cron/logs/backup-20260405.log
+A	scripts/cron/logs/collect-ideas-20260405.log
+14f570e 📝 [2026-04-05 00:00] 未跟踪 1 个文件
+M	docs/SYSTEM-REFERENCE.md
+M	scripts/cron/logs/backup-20260404.log
+A	scripts/cron/logs/backup-20260405.log
 c617f01 📝 [2026-04-04 18:00] 工作区更新
 M	scripts/cron/logs/backup-20260404.log
 26689d3 📝 [2026-04-04 12:00] 未跟踪 2 个文件
@@ -143,20 +157,6 @@ A	memory/2026-04-02.md
 M	scripts/cron/logs/backup-20260402.log
 M	scripts/cron/logs/collect-ideas-20260402.log
 A	"team/meetings/2026-04-02-\346\257\217\346\227\245\345\220\214\346\255\245\344\274\232\350\256\256.md"
-7883c26 📝 [2026-04-02 06:00] 未跟踪 1 个文件
-M	scripts/cron/logs/backup-20260402.log
-A	scripts/cron/logs/collect-ideas-20260402.log
-b23ee3b 📝 [2026-04-02 00:00] 未跟踪 1 个文件
-M	docs/SYSTEM-REFERENCE.md
-M	scripts/cron/logs/backup-20260401.log
-A	scripts/cron/logs/backup-20260402.log
-30ca23d 📝 [2026-04-01 18:00] 工作区更新
-M	scripts/cron/logs/backup-20260401.log
-45ff2d0 📝 [2026-04-01 12:00] 未跟踪 3 个文件
-A	briefings/2026-04-01.md
-A	memory/2026-04-01.md
-M	projects/openzeno/src/data/pm-tasks.json
-M	scripts/cron/logs/backup-20260401.log
 
 ### 📝 今日动态
 
