@@ -432,3 +432,37 @@ To https://github.com/OpenOriginBot/OpenOrigin.git
 [00:00:02] [0;34m[检查] 前置检查...[0m
 [00:00:02] [0;32m[OK] 前置检查通过[0m
 [00:00:02] [0;34m[暂存] git add -A[0m
+/Users/liam/.openclaw/workspace/automations/scripts/backup-repo.sh: line 87: [:        0
+0: integer expression expected
+/Users/liam/.openclaw/workspace/automations/scripts/backup-repo.sh: line 93: [:        0
+0: integer expression expected
+/Users/liam/.openclaw/workspace/automations/scripts/backup-repo.sh: line 96: [:        0
+0: integer expression expected
+[00:00:02] [0;32m[变更]       16 个文件变更[0m
+[00:00:02] [0;32m[提交] 📦 2026-04-07 00:00 自动备份 | +       5新增
+
+变更文件 (      16 个文件)[0m
+[main a64e4f4] 📦 2026-04-07 00:00 自动备份 | +       5新增\n\n变更文件 (      16 个文件)
+ Committer: liam <liam@liams-Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 16 files changed, 733 insertions(+), 491 deletions(-)
+ create mode 100644 automations/logs/backup-20260407.log
+ create mode 100644 automations/logs/docs-update-20260406.log
+ create mode 100644 projects/OpenOrigin/.env.production
+ create mode 100644 projects/OpenOrigin/api/setup-memory.js
+ create mode 100644 projects/OpenOrigin/src/modules/Brain/MemoryRegistry.jsx
+[00:00:02] [0;34m[推送] 尝试 1/2...[0m
+To https://github.com/OpenOriginBot/OpenOrigin.git
+   7e425f7..a64e4f4  main -> auto-backup/liams-Mac-mini.local
+[00:00:06] [0;32m[成功] 推送到 auto-backup/liams-Mac-mini.local[0m
+[00:00:06] [0;32m=== 备份完成，耗时 4s ===[0m
