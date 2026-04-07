@@ -5,10 +5,6 @@ const SB_URL = 'https://fippycifijhcmsrxoylr.supabase.co'
 const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpcHB5Y2lmaWpoY21zcnhveWxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzOTU2NjgsImV4cCI6MjA5MDk3MTY2OH0.CM2zy328XkxfiMa7rZPZS59XZfX7j_PK2wZiC8f5nAY'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-function getPath(req) {
-  return (req.url || '/').split('?')[0]
-}
-
 function handleCors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS')
@@ -74,7 +70,9 @@ const routes = {
 
 // ─── Main Handler ──────────────────────────────────────────────────────────────
 export default async function handler(req, res) {
-  const path = getPath(req).replace(/^\//, '')
+  const rawUrl = req.url || '/'
+  const rawPath = rawUrl.split('?')[0]
+  const path = rawPath.replace(/^\//, '')
   const method = req.method || 'GET'
 
   try {
@@ -84,15 +82,22 @@ export default async function handler(req, res) {
       return
     }
 
-    // Health check
-    if (path === 'health' || path === '') {
-      return res.json({ status: 'ok', project: 'OpenOrigin API', version: '1.0.0' })
-    }
-
     // Parse path
     const segments = path.split('/').filter(Boolean)
-    const table = segments[0]
 
+    // Skip 'api' prefix if present (vercel rewrite includes /api/ in path)
+    const offset = segments[0] === 'api' ? 1 : 0
+    const table = segments[offset]
+    const id = segments[offset + 1]
+    const action = segments[offset + 2]
+
+    // Health check (skip api prefix for health check too)
+    const cleanPath = segments.slice(offset).join('/')
+    if (cleanPath === 'health' || cleanPath === '') {
+      return res.json({ status: 'ok', project: 'OpenOrigin API', version: '1.0.0', rawUrl })
+    }
+
+    // Route validation
     if (!table || !routes[table]) {
       return res.status(404).json({ error: 'Unknown table', tables: Object.keys(routes) })
     }
@@ -100,9 +105,6 @@ export default async function handler(req, res) {
     if (!routes[table].methods.includes(method)) {
       return res.status(405).json({ error: `Method ${method} not allowed` })
     }
-
-    const id = segments[1]
-    const action = segments[2]
 
     // GET /:table or GET /:table/:id
     if (method === 'GET') {

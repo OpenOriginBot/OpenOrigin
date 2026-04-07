@@ -17,11 +17,6 @@ const typeConfig = {
   team: { label: '团队会议', color: '#fb923c' },
 };
 
-const typeColors = meetingTypeDistribution?.reduce((acc, t) => {
-  acc[t.name.toLowerCase().replace('-', '')] = t.color;
-  return acc;
-}, {});
-
 function durationDisplay(mins) {
   if (mins < 60) return `${mins}m`;
   const h = Math.floor(mins / 60);
