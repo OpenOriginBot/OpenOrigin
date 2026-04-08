@@ -1,6 +1,6 @@
 # 🔧 SYSTEM-REFERENCE.md
 
-> _最后更新：2026-04-06 23:00:01_
+> _最后更新：2026-04-07 23:00:01_
 
 ---
 
@@ -89,8 +89,10 @@ OpenClaw Workspace
 
 | 文件 | 修改时间 |
 |------|----------|
+| memory/2026-04-07.md | 2026-04-07 |
+| docs/SYSTEM-REFERENCE.md | 2026-04-07 |
+| briefings/2026-04-07.md | 2026-04-07 |
 | memory/2026-04-06.md | 2026-04-06 |
-| docs/SYSTEM-REFERENCE.md | 2026-04-06 |
 | briefings/2026-04-06.md | 2026-04-06 |
 | memory/2026-04-05.md | 2026-04-05 |
 | briefings/2026-04-05.md | 2026-04-05 |
@@ -102,11 +104,24 @@ OpenClaw Workspace
 | briefings/2026-04-02.md | 2026-04-02 |
 | memory/2026-04-01.md | 2026-04-01 |
 | briefings/2026-04-01.md | 2026-04-01 |
-| memory/2026-03-31.md | 2026-03-31 |
-| briefings/2026-03-31.md | 2026-03-31 |
 
 ### 📂 Git 变更（自 2026-03-27）
 
+5985a67 📝 [2026-04-07 18:00] 工作区更新
+M	scripts/cron/logs/backup-20260407.log
+c7956c0 📝 [2026-04-07 12:00] 未跟踪 3 个文件
+A	briefings/2026-04-07.md
+A	memory/2026-04-07.md
+M	scripts/cron/logs/backup-20260407.log
+M	scripts/cron/logs/collect-ideas-20260407.log
+A	"team/meetings/2026-04-07-\346\257\217\346\227\245\345\220\214\346\255\245\344\274\232\350\256\256.md"
+b768bc8 📝 [2026-04-07 06:00] 未跟踪 1 个文件
+M	scripts/cron/logs/backup-20260407.log
+A	scripts/cron/logs/collect-ideas-20260407.log
+f102179 📝 [2026-04-07 00:00] 未跟踪 1 个文件
+M	docs/SYSTEM-REFERENCE.md
+M	scripts/cron/logs/backup-20260406.log
+A	scripts/cron/logs/backup-20260407.log
 f4868d2 📝 [2026-04-06 18:00] 工作区更新
 M	scripts/cron/logs/backup-20260406.log
 b52e35c 📝 [2026-04-06 12:00] 未跟踪 3 个文件
@@ -142,21 +157,6 @@ M	scripts/cron/logs/backup-20260404.log
 A	briefings/2026-04-04.md
 A	memory/2026-04-04.md
 M	scripts/cron/logs/backup-20260404.log
-M	scripts/cron/logs/collect-ideas-20260404.log
-4e7b087 📝 [2026-04-04 06:00] 未跟踪 1 个文件
-M	scripts/cron/logs/backup-20260404.log
-A	scripts/cron/logs/collect-ideas-20260404.log
-1cdc763 📝 [2026-04-04 00:00] 未跟踪 1 个文件
-M	docs/SYSTEM-REFERENCE.md
-M	scripts/cron/logs/backup-20260403.log
-A	scripts/cron/logs/backup-20260404.log
-944f364 📝 [2026-04-03 18:00] 工作区更新
-M	scripts/cron/logs/backup-20260403.log
-52ddf80 📝 [2026-04-03 12:00] 未跟踪 3 个文件
-A	briefings/2026-04-03.md
-A	memory/2026-04-03.md
-M	scripts/cron/logs/backup-20260403.log
-A	"team/meetings/2026-04-03-\346\257\217\346\227\245\345\220\214\346\255\245\344\274\232\350\256\256.md"
 
 ### 📝 今日动态
 
