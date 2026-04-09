@@ -1,6 +1,21 @@
 {
   "ideas": [
     {
+      "id": "idea-20260409060001-723",
+      "title": "skills/collect-ideas/SKILL.md",
+      "summary": "从夜间自动化分析生成的创意：skills/collect-ideas/SKILL.md",
+      "date": "2026-04-09T06:00:01Z",
+      "track": "B",
+      "category": "运营工具",
+      "ratings": {
+        "painPoint": 3,
+        "devEfficiency": 3,
+        "commercialization": 3,
+        "aiAdvantage": 3
+      },
+      "overallScore": 3.5
+    },
+    {
       "id": "idea-20260329060002-51",
       "title": "从",
       "summary": "从夜间自动化分析生成的创意：从",
