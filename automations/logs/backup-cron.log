@@ -965,3 +965,32 @@ To https://github.com/OpenOriginBot/OpenOrigin.git
 [00:00:04] [0;34m[检查] 前置检查...[0m
 [00:00:04] [0;32m[OK] 前置检查通过[0m
 [00:00:04] [0;34m[暂存] git add -A[0m
+/Users/liam/.openclaw/workspace/automations/scripts/backup-repo.sh: line 87: [:        0
+0: integer expression expected
+/Users/liam/.openclaw/workspace/automations/scripts/backup-repo.sh: line 93: [:        0
+0: integer expression expected
+/Users/liam/.openclaw/workspace/automations/scripts/backup-repo.sh: line 96: [:        0
+0: integer expression expected
+[00:00:04] [0;32m[变更]        8 个文件变更[0m
+[00:00:04] [0;32m[提交] 📦 2026-04-11 00:00 自动备份 | +       2新增[0m
+[main c7db38a] 📦 2026-04-11 00:00 自动备份 | +       2新增
+ Committer: liam <liam@liams-Mac-mini.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 8 files changed, 94 insertions(+), 41 deletions(-)
+ create mode 100644 automations/logs/backup-20260411.log
+ create mode 100644 automations/logs/docs-update-20260410.log
+[00:00:04] [0;34m[推送] 尝试 1/2...[0m
+To https://github.com/OpenOriginBot/OpenOrigin.git
+   a3bb335..c7db38a  main -> auto-backup/liams-Mac-mini.local
+[00:00:06] [0;32m[成功] 推送到 auto-backup/liams-Mac-mini.local[0m
+[00:00:06] [0;32m=== 备份完成，耗时 2s ===[0m
